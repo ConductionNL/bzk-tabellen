@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * PK Afnemers
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,7 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
+ *     			"method"="GET",
  *     			"path"="/tabel55/{afnemersaanduiding}"
  *     		}
  *     }
@@ -33,11 +33,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\Tabel55Repository")
  */
 class Tabel55
-{	
+{
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
 	 * @ApiProperty(identifier=true)
@@ -49,7 +49,7 @@ class Tabel55
      * @ORM\Column(type="string", length=255, unique=true)
      */
 	private $afnemersaanduiding;
-	
+
 	/**
 	 *
 	 * @var string
@@ -66,7 +66,7 @@ class Tabel55
 
 	public function getId(): ?string
     {
-        return $this->id;
+        return $this->afnemersaanduiding;
     }
 
     public function getAfnemersaanduiding(): ?string
