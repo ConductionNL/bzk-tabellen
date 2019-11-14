@@ -26,7 +26,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     itemOperations={
  *     		"get"={
  *     			"method"="GET",
- *     			"path"="/tabel34/{landcode}"
+ *     			"path"="/tabel34/{id}"
  *     		}
  *     }
  * )
@@ -34,6 +34,30 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tabel34
 {
+	/**
+	 * @var UuidInterface $id The UUID identifier of this object
+	 * @example e2984465-190a-4562-829e-a8cca81aa35d
+	 *
+	 * @ApiProperty(
+	 * 	   identifier=true,
+	 *     attributes={
+	 *         "swagger_context"={
+	 *         	   "description" = "The UUID identifier of this object",
+	 *             "type"="string",
+	 *             "format"="uuid",
+	 *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
+	 *         }
+	 *     }
+	 * )
+	 *
+	 * @Assert\Uuid
+	 * @Groups({"read"})
+	 * @ORM\Id
+	 * @ORM\Column(type="uuid", unique=true)
+	 * @ORM\GeneratedValue(strategy="CUSTOM")
+	 * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
+	 */
+	private $id;
 
 	/**
 	 *
@@ -41,8 +65,6 @@ class Tabel34
 	 *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
-	 * @ApiProperty(identifier=true)
-	 * @ORM\Id
 	 * @Assert\Length(
 	 *      min = 4,
 	 *      max = 5,
@@ -93,9 +115,9 @@ class Tabel34
 	 */
 	private $fictieveDatumEinde;
 
-	public function getId(): ?string
+	public function getId()
     {
-        return $this->landcode;
+        return $this->id;
     }
 
     public function getLandcode(): ?string
