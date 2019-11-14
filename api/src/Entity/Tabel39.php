@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Akteaanduiding
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,7 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
+ *     			"method"="GET",
  *     			"path"="/tabel39/{akteaanduiding}"
  *     		}
  *     }
@@ -33,11 +33,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\Tabel39Repository")
  */
 class Tabel39
-{	
+{
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
 	 * @ApiProperty(identifier=true)
@@ -48,8 +48,8 @@ class Tabel39
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=255, unique=true)
      */
-	private $akteaanduiding; 
-	
+	private $akteaanduiding;
+
 	/**
 	 *
 	 * @var string
@@ -66,7 +66,7 @@ class Tabel39
 
 	public function getId(): ?string
     {
-        return $this->id;
+        return $this->akteaanduiding;
     }
 
     public function getAkteaanduiding(): ?string
@@ -91,5 +91,5 @@ class Tabel39
         $this->omschrijving = $omschrijving;
 
         return $this;
-    } 
+    }
 }

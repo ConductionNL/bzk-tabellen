@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Landen Tabels
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,7 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
+ *     			"method"="GET",
  *     			"path"="/tabel34/{landcode}"
  *     		}
  *     }
@@ -34,7 +34,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tabel34
 {
-	
+
 	/**
 	 *
 	 * @var string
@@ -51,7 +51,7 @@ class Tabel34
 	 * @ORM\Column(type="string", length=5, unique=true)
 	 */
 	private $landcode;
-	
+
 	/**
 	 *
 	 * @var string
@@ -65,7 +65,7 @@ class Tabel34
 	 * @ORM\Column(type="string", length=255)
 	 */
 	private $omschrijving;
-	
+
 	/**
 	 * @var string A "Y-m-d" formatted value
 	 *
@@ -74,7 +74,7 @@ class Tabel34
 	 * @ORM\Column(type="date", nullable=true)
 	 */
 	private $datumIngang;
-	
+
 	/**
 	 * @var string A "Y-m-d" formatted value
 	 *
@@ -83,7 +83,7 @@ class Tabel34
 	 * @ORM\Column(type="date", nullable=true)
 	 */
 	private $datumEinde;
-	
+
 	/**
 	 * @var string A "Y-m-d" formatted value
 	 *
@@ -95,7 +95,7 @@ class Tabel34
 
 	public function getId(): ?string
     {
-        return $this->id;
+        return $this->landcode;
     }
 
     public function getLandcode(): ?string

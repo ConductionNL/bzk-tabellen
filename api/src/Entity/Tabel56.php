@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Verblijfstitel
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,7 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
+ *     			"method"="GET",
  *     			"path"="/tabel56/{verblijfstitel}"
  *     		}
  *     }
@@ -33,11 +33,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\Tabel56Repository")
  */
 class Tabel56
-{	
+{
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
 	 * @ApiProperty(identifier=true)
@@ -49,7 +49,7 @@ class Tabel56
      * @ORM\Column(type="string", length=255, unique=true)
      */
 	private $verblijfstitel;
-	
+
 	/**
 	 *
 	 * @var string
@@ -66,7 +66,7 @@ class Tabel56
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Groups({"read"})
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
@@ -75,7 +75,7 @@ class Tabel56
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Groups({"read"})
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
@@ -84,7 +84,7 @@ class Tabel56
 
     public function getId(): ?string
     {
-        return $this->id;
+        return $this->verblijfstitel;
     }
 
     public function getVerblijfstitel(): ?string
