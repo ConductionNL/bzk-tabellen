@@ -9,7 +9,11 @@ parameters:
     env(APP_DESCRIPTION): ''
     env(APP_REPRO): ''
     env(APP_DEMO): ''
+    env(APP_ENV): ''
+    env(CONTAINER_REGISTRY_BASE): ''
+    env(CONTAINER_PROJECT_TITLE): ''
     env(CONTAINER_PROJECT_NAME): ''
+    env(CONTAINER_PROJECT_VERSION): ''
 
 api_platform:
     mapping:
@@ -18,16 +22,21 @@ api_platform:
     # The basic API data
     title: '%env(APP_TITLE)%'
     description: |
-        %env(APP_DESCRIPTION)% 
+        API Details
+        - Component: %env(CONTAINER_PROJECT_TITLE)%
+        - Reference: %env(CONTAINER_PROJECT_NAME)%
+        - Enviroment: %env(APP_ENV)%
+        - Version: %env(CONTAINER_PROJECT_VERSION)%
+        - Repository: [%env(APP_REPRO)%](%env(APP_REPRO)%) / [zip](%env(APP_REPRO)%/archive/master.zip)
+        - Datamodel: [postman](/schema/openapi.postman_collection) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
         
-        Het Tabellen component voorziet in een implementatie strategie voor applicaties  die afhankelijk zijn van gegevens die op dit moment nog niet op commonground beschikbaar of nog niet op de manier waarop we deze beschikbaar willen hebben. Voorbeelden hiervan zijn de [RVIG Landelijke tabellen]( https://publicaties.rvig.nl/Landelijke_tabellen) en een Koppeltabel voor gemeente codes naar RSIN. 
-
-        Het component bied hierbij de mogelijkheid om deze bronnen te benaderen en gebruiken als REST API (dus bijvoorbeeld de gemeentelijst te doorzoeken) conform de NL API strategie. Terug gegeven bronnen zijn voorzien van een URI endpoint waardoor deze gebruikt kunnen worden als bron. 
-
-        Hierbij is het nadrukkelijk mogelijk dat deze bronnen in de toekomst binnen dit component komen te vervallen doordat  zij zichzelf ontsluiten. In dat geval zal de URI dor middel van een 301 redirect  worden doorverwezen naar de nieuwe bron. Hierdoor word continuiteit van verwijzingen geborgd.
-
-        Uiteindelijk faciliteert het component hiermee een methode om blokerende externe dependencies terug te brengen. Door deze als het waren commonground op te trekken als koppeltabel. Hiermee is het mogelijk om implementaties inktvlek gewijs uit te voeren waarbij component voor component word overgetrokken terwijl een eventuele applicatie reeds in productie is.
-             
+        %env(APP_DESCRIPTION)% 
+                                 
+        Voor het gebruik van deze applicatie is een JWT Token nodig, deze hangt altijd vast aan een applicatie, ofwel user. Geldige JWT Tokens worden aangemaakt bij het registreren van een applicatie en kennen een beperkte houdbaarheid. 
+        JWT Tokens kunnen zowel worden verlengd, als opnieuw worden aangevraagd, dit aan de hand van de applicatie id en sleutel.
+        Let er bij het meegeven van JWT tokens op dat deze moet worden voorafgegaan door een Bearer en een spatie, onder de header Authorization. De volledig naam wordt daarmee: 'Authorization: Bearer [TOKEN]'.
+        
+    
     version: '%env(APP_VERSION)%'  
     
     # Lets configure the api platform bundle to display the docs in confrmation with common ground standards 
@@ -50,15 +59,15 @@ api_platform:
         html:     ['text/html']
     
     # Varnish integration, remove if unwanted
-    http_cache:
-        invalidation:
-            enabled: true
-            varnish_urls: ['%env(VARNISH_URL)%']
-        max_age: 0
-        shared_max_age: 3600
-        vary: ['Content-Type', 'Authorization']
-        public: true
+    # http_cache:
+    #    invalidation:
+    #        enabled: true
+    #        varnish_urls: ['%env(VARNISH_URL)%']
+    #    max_age: 0
+    #    shared_max_age: 3600
+    #    vary: ['Content-Type', 'Authorization']
+    #    public: true
         
     # Mercure integration, remove if unwanted
-    mercure:
-        hub_url: '%env(MERCURE_SUBSCRIBE_URL)%'
+    # mercure:
+    #    hub_url: '%env(MERCURE_SUBSCRIBE_URL)%'

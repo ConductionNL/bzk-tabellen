@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Adellijke titel/predikaat
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,7 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
+ *     			"method"="GET",
  *     			"path"="/tabel38/{adellijkeTitelPredikaat}"
  *     		}
  *     }
@@ -33,10 +33,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\Tabel38Repository")
  */
 class Tabel38
-{	
-    /**     
-     * @var string 
-     * 
+{
+    /**
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
 	 * @ApiProperty(identifier=true)
@@ -48,7 +48,7 @@ class Tabel38
      * @ORM\Column(type="string", length=255, unique=true)
      */
 	private $adellijkeTitelPredikaat;
-	
+
 	/**
 	 * @var string
 	 *
@@ -61,7 +61,7 @@ class Tabel38
 	 * @ORM\Column(type="string", length=255)
 	 */
 	private $omschrijving;
-	
+
 	/**
 	 * @var string
 	 *
@@ -76,7 +76,7 @@ class Tabel38
 
 	public function getId(): ?string
     {
-        return $this->id;
+        return $this->adellijkeTitelPredikaat;
     }
 
     public function getAdellijkeTitelPredikaat(): ?string

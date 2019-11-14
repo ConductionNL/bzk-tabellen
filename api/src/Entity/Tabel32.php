@@ -12,9 +12,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * 
+ *
  * Nationaliteitcodes
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -26,7 +26,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
+ *     			"method"="GET",
  *     			"path"="/tabel32/{nationaliteitcode}"
  *     		}
  *     }
@@ -34,11 +34,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\Tabel32Repository")
  */
 class Tabel32
-{	
+{
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
 	 * @ApiProperty(identifier=true)
@@ -53,9 +53,9 @@ class Tabel32
     private $nationaliteitcode;
 
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="partial")
      * @Groups({"read"})
      * @Assert\Length(
@@ -68,7 +68,7 @@ class Tabel32
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Groups({"read"})
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
@@ -77,7 +77,7 @@ class Tabel32
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Groups({"read"})
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
@@ -86,7 +86,7 @@ class Tabel32
 
     public function getId(): ?string
     {
-        return $this->id;
+        return $this->nationaliteitcode;
     }
 
     public function getNationaliteitcode(): ?string
