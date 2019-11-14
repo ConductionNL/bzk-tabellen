@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,28 +25,8 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
- *     			"path"="/tabel41/uuid/{id}",
- *     			"swagger_context" = {"summary"="Haal  Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap op UUID", "description"="Beschrijving"}
- *     		},
- *     		"get_on_code"={
- *     			"method"="GET", 
- *     			"path"="/tabel42/{code}",
- *     			"requirements"={"code"="\d+"}, 
- *     			"swagger_context" = {
- *     				"summary"="Haal Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap op code", 
- *     				"description"="Beschrijving",
- *                  "parameters" = {
- *                      {
- *                          "name" = "code",
- *                          "in" = "path",
- *                          "description" = "De Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap code waarop wordt gezocht",
- *                          "required" = "true",
- *                          "type" : "string",
- *                          "example" : "0001"
- *                      }
- *                  }
- *     			}
+ *     			"method"="GET",
+ *     			"path"="/tabel41/{reden}"
  *     		}
  *     }
  * )
@@ -54,32 +34,23 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tabel41
 {
-	/**
-	 * @var \Ramsey\Uuid\UuidInterface
-	 *
-	 * @Groups({"read"})
-	 * @ApiProperty(identifier=true)
-	 * @ORM\Id
-	 * @ORM\Column(type="uuid", unique=true)
-	 * @ORM\GeneratedValue(strategy="CUSTOM")
-	 * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
-	 */
-	private $id;
-	
+
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
+	 * @ApiProperty(identifier=true)
+	 * @ORM\Id
      * @Assert\Length(
      *      max = 255,
      * )
      * @Assert\NotBlank
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
 	private $reden;
-	
+
 	/**
 	 *
 	 * @var string
@@ -96,7 +67,7 @@ class Tabel41
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Groups({"read"})
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
@@ -105,16 +76,16 @@ class Tabel41
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Groups({"read"})
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
      */
     private $datumEinde;
 
-    public function getId()
+    public function getId(): ?string
     {
-        return $this->id;
+        return $this->reden;
     }
 
     public function getReden(): ?string

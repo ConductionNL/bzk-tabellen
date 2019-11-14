@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Voorvoegsels
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,9 +25,8 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
- *     			"path"="/tabel36/uuid/{id}",
- *     			"swagger_context" = {"summary"="Haal Voorvoegsel op UUID", "description"="Beschrijving"}
+ *     			"method"="GET",
+ *     			"path"="/tabel36/{voorvoegsel}"
  *     		}
  *     }
  * )
@@ -35,35 +34,26 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tabel36
 {
-	/**
-	 * @var \Ramsey\Uuid\UuidInterface
-	 *
-	 * @Groups({"read"})
-	 * @ApiProperty(identifier=true)
-	 * @ORM\Id
-	 * @ORM\Column(type="uuid", unique=true)
-	 * @ORM\GeneratedValue(strategy="CUSTOM")
-	 * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
-	 */
-	private $id;
-	
+
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="partial")
      * @Groups({"read"})
+	 * @ApiProperty(identifier=true)
+	 * @ORM\Id
      * @Assert\Length(
      *      max = 255,
      * )
      * @Assert\NotBlank
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
 	private $voorvoegsel;
 
-    public function getId()
+	public function getId(): ?string
     {
-        return $this->id;
+        return $this->voorvoegsel;
     }
 
     public function getVoorvoegsel(): ?string

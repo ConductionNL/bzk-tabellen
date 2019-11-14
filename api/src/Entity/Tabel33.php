@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Gemeentecodes
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,28 +25,8 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
- *     			"path"="/tabel33/uuid/{id}",
- *     			"swagger_context" = {"summary"="Haal Gemeente op UUID", "description"="Beschrijving"}
- *     		},
- *     		"get_on_code"={
- *     			"method"="GET", 
- *     			"path"="/tabel33/{code}",
- *     			"requirements"={"code"="\d+"}, 
- *     			"swagger_context" = {
- *     				"summary"="Haal Gemeente op code", 
- *     				"description"="Beschrijving",
- *                  "parameters" = {
- *                      {
- *                          "name" = "code",
- *                          "in" = "path",
- *                          "description" = "De Gemeentecode waarop wordt gezocht",
- *                          "required" = "true",
- *                          "type" : "string",
- *                          "example" : "0001"
- *                      }
- *                  }
- *     			}
+ *     			"method"="GET",
+ *     			"path"="/tabel33/{gemeentecodes}"
  *     		}
  *     }
  * )
@@ -54,37 +34,27 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tabel33
 {
-	/**
-	 * @var \Ramsey\Uuid\UuidInterface
-	 *
-	 * @Groups({"read"})
-	 * @ApiProperty(identifier=true)
-	 * @ORM\Id
-	 * @ORM\Column(type="uuid", unique=true)
-	 * @ORM\GeneratedValue(strategy="CUSTOM")
-	 * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
-	 */
-	private $id;
-	
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
+	 * @ApiProperty(identifier=true)
+	 * @ORM\Id
      * @Assert\Length(
      *      min = 4,
      *      max = 4,
      * )
      * @Assert\NotBlank
-     * @ORM\Column(type="string", length=4)
+     * @ORM\Column(type="string", length=4, unique=true)
      */
 	private $gemeentecode;
 
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="partial")
      * @Groups({"read"})
      * @Assert\Length(
@@ -94,7 +64,7 @@ class Tabel33
      * @ORM\Column(type="string", length=255)
      */
 	private $omschrijving;
-	
+
 	/**
 	 *
 	 * @var string
@@ -107,11 +77,11 @@ class Tabel33
 	 * @ORM\Column(type="string", length=4, nullable=true)
 	 */
 	private $nieuweCode;
-	
+
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
      */
@@ -119,16 +89,16 @@ class Tabel33
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Groups({"read"})
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
      */
     private $datumEinde;
 
-    public function getId()
+    public function getId(): ?string
     {
-        return $this->id;
+        return $this->gemeentecode;
     }
 
     public function getGemeentecode(): ?string

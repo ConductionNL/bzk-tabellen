@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Adellijke titel/predikaat
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,28 +25,8 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
- *     			"path"="/tabel38/uuid/{id}",
- *     			"swagger_context" = {"summary"="Haal Adellijke titel/predikaat op UUID", "description"="Beschrijving"}
- *     		},
- *     		"get_on_code"={
- *     			"method"="GET", 
- *     			"path"="/tabel38/{code}",
- *     			"requirements"={"code"="\d+"}, 
- *     			"swagger_context" = {
- *     				"summary"="Haal Adellijke titel/predikaat op code", 
- *     				"description"="Beschrijving",
- *                  "parameters" = {
- *                      {
- *                          "name" = "code",
- *                          "in" = "path",
- *                          "description" = "De Adellijke titel/predikaat code waarop wordt gezocht",
- *                          "required" = "true",
- *                          "type" : "string",
- *                          "example" : "0001"
- *                      }
- *                  }
- *     			}
+ *     			"method"="GET",
+ *     			"path"="/tabel38/{adellijkeTitelPredikaat}"
  *     		}
  *     }
  * )
@@ -54,31 +34,21 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tabel38
 {
-	/**
-	 * @var \Ramsey\Uuid\UuidInterface
-	 *
-	 * @Groups({"read"})
-	 * @ApiProperty(identifier=true)
-	 * @ORM\Id
-	 * @ORM\Column(type="uuid", unique=true)
-	 * @ORM\GeneratedValue(strategy="CUSTOM")
-	 * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
-	 */
-	private $id;
-	
-    /**     
-     * @var string 
-     * 
+    /**
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
+	 * @ApiProperty(identifier=true)
+	 * @ORM\Id
      * @Assert\Length(
      *      max = 255,
      * )
      * @Assert\NotBlank
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
 	private $adellijkeTitelPredikaat;
-	
+
 	/**
 	 * @var string
 	 *
@@ -91,7 +61,7 @@ class Tabel38
 	 * @ORM\Column(type="string", length=255)
 	 */
 	private $omschrijving;
-	
+
 	/**
 	 * @var string
 	 *
@@ -104,9 +74,9 @@ class Tabel38
 	 */
 	private $soort;
 
-    public function getId()
+	public function getId(): ?string
     {
-        return $this->id;
+        return $this->adellijkeTitelPredikaat;
     }
 
     public function getAdellijkeTitelPredikaat(): ?string
