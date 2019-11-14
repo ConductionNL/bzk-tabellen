@@ -191,8 +191,7 @@ paths:
             type: string
             format: date-time
           in: query
-  '/rsin/{rsin}':
-    get:
+    post:
       tags:
         - RSIN
       operationId: getRSINItem
@@ -301,7 +300,64 @@ paths:
                 $ref: '#/components/schemas/RSIN-read'
         404:
           description: 'Resource not found'
-  /tabel32:
+      requestBody:
+        content:
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
+        description: 'The new ExampleEntity resource'
+      parameters:
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/example_entities/{id}':
     get:
       tags:
         - Tabel32
@@ -3397,216 +3453,20 @@ components:
         kvk:
           readOnly: true
           type: string
-        gemeente_code:
-          readOnly: true
-          type: string
-    Tabel32-read:
+      required:
+        - name
+    ExampleEntity-write:
       type: object
-      description: Nationaliteitcodes
+      description: ''
+      required:
+        - name
       properties:
-        nationaliteitcode:
-          readOnly: true
+        name:
+          description: 'The name of this example property'
           type: string
-        omschrijving:
-          readOnly: true
+        description:
+          description: 'The description of this example property'
           type: string
-        datum_ingang:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-        datum_einde:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-    Tabel33-read:
-      type: object
-      description: Gemeentecodes
-      properties:
-        gemeentecode:
-          readOnly: true
-          type: string
-        omschrijving:
-          readOnly: true
-          type: string
-        nieuwe_code:
-          readOnly: true
-          type: string
-        datum_einde:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-    Tabel34-read:
-      type: object
-      description: 'Landen Tabels'
-      properties:
-        landcode:
-          readOnly: true
-          type: string
-        omschrijving:
-          readOnly: true
-          type: string
-        datum_ingang:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-        datum_einde:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-        fictieve_datum_einde:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-    Tabel36-read:
-      type: object
-      description: Voorvoegsels
-      properties:
-        voorvoegsel:
-          readOnly: true
-          type: string
-    Tabel37-read:
-      type: object
-      description: redenOpnemenBeeindigenNationaliteit
-      properties:
-        reden:
-          readOnly: true
-          description: redenOpnemenBeeindigenNationaliteit
-          type: string
-        omschrijving:
-          readOnly: true
-          type: string
-        soort:
-          readOnly: true
-          type: string
-        datum_ingang:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-        datum_einde:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-    Tabel38-read:
-      type: object
-      description: 'Adellijke titel/predikaat'
-      properties:
-        adellijke_titel_predikaat:
-          readOnly: true
-          type: string
-        omschrijving:
-          readOnly: true
-          type: string
-        soort:
-          readOnly: true
-          type: string
-    Tabel39-read:
-      type: object
-      description: Akteaanduiding
-      properties:
-        akteaanduiding:
-          readOnly: true
-          type: string
-        omschrijving:
-          readOnly: true
-          type: string
-    Tabel41-read:
-      type: object
-      description: 'Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap'
-      properties:
-        reden:
-          readOnly: true
-          type: string
-        omschrijving:
-          readOnly: true
-          type: string
-        datum_ingang:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-        datum_einde:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-    Tabel48-read:
-      type: object
-      description: 'Nederlands reisdocument'
-      properties:
-        nederlands_reisdocument:
-          readOnly: true
-          type: string
-        omschrijving:
-          readOnly: true
-          type: string
-        datum_ingang:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-        datum_einde:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-    Tabel49-read:
-      type: object
-      description: 'Autoriteit van afgifte Nederlands reisdocument'
-      properties:
-        autoriteit_van_afgifte:
-          readOnly: true
-          type: string
-        omschrijving:
-          readOnly: true
-          type: string
-        datum_ingang:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-        datum_einde:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-    Tabel55-read:
-      type: object
-      description: 'PK Afnemers'
-      properties:
-        afnemersaanduiding:
-          readOnly: true
-          type: string
-        omschrijving:
-          readOnly: true
-          type: string
-    Tabel56-read:
-      type: object
-      description: Verblijfstitel
-      properties:
-        verblijfstitel:
-          readOnly: true
-          type: string
-        omschrijving:
-          readOnly: true
-          type: string
-        datum_ingang:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
-        datum_einde:
-          readOnly: true
-          description: 'A "Y-m-d" formatted value'
-          type: string
-          format: date-time
 host: irc.zaakonline.nl
 servers:
   -
