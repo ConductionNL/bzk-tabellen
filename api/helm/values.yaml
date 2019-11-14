@@ -4,7 +4,7 @@
 
 settings:
   registryBase: docker.io/conduction
-  projectName: pc
+  projectName: ltr
   version: dev
   env: dev
   debug: 1
