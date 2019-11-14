@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Autoriteit van afgifte Nederlands reisdocument
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,7 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
+ *     			"method"="GET",
  *     			"path"="/tabel49/{autoriteitVanAfgifte}"
  *     		}
  *     }
@@ -34,11 +34,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tabel49
 {
-	
+
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
 	 * @ApiProperty(identifier=true)
@@ -50,7 +50,7 @@ class Tabel49
      * @ORM\Column(type="string", length=255, unique=true)
      */
 	private $autoriteitVanAfgifte;
-	
+
 	/**
 	 *
 	 * @var string
@@ -67,7 +67,7 @@ class Tabel49
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Groups({"read"})
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
@@ -76,7 +76,7 @@ class Tabel49
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Groups({"read"})
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
@@ -85,7 +85,7 @@ class Tabel49
 
     public function getId(): ?string
     {
-        return $this->id;
+        return $this->autoriteitVanAfgifte;
     }
 
     public function getAutoriteitVanAfgifte(): ?string

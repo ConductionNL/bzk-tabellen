@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Voorvoegsels
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,7 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
+ *     			"method"="GET",
  *     			"path"="/tabel36/{voorvoegsel}"
  *     		}
  *     }
@@ -34,11 +34,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tabel36
 {
-	
+
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="partial")
      * @Groups({"read"})
 	 * @ApiProperty(identifier=true)
@@ -53,7 +53,7 @@ class Tabel36
 
 	public function getId(): ?string
     {
-        return $this->id;
+        return $this->voorvoegsel;
     }
 
     public function getVoorvoegsel(): ?string

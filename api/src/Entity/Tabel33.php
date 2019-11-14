@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Gemeentecodes
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -25,7 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
+ *     			"method"="GET",
  *     			"path"="/tabel33/{gemeentecodes}"
  *     		}
  *     }
@@ -33,11 +33,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\Tabel33Repository")
  */
 class Tabel33
-{	
+{
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
 	 * @ApiProperty(identifier=true)
@@ -52,9 +52,9 @@ class Tabel33
 	private $gemeentecode;
 
     /**
-     * 
-     * @var string 
-     * 
+     *
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="partial")
      * @Groups({"read"})
      * @Assert\Length(
@@ -64,7 +64,7 @@ class Tabel33
      * @ORM\Column(type="string", length=255)
      */
 	private $omschrijving;
-	
+
 	/**
 	 *
 	 * @var string
@@ -77,11 +77,11 @@ class Tabel33
 	 * @ORM\Column(type="string", length=4, nullable=true)
 	 */
 	private $nieuweCode;
-	
+
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
      */
@@ -89,7 +89,7 @@ class Tabel33
 
     /**
      * @var string A "Y-m-d" formatted value
-     * 
+     *
      * @Groups({"read"})
      * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
@@ -98,7 +98,7 @@ class Tabel33
 
     public function getId(): ?string
     {
-        return $this->id;
+        return $this->gemeentecode;
     }
 
     public function getGemeentecode(): ?string
