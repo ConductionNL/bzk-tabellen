@@ -24,10 +24,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     		}
  *     },
  *     itemOperations={
- *     		"get"={
- *     			"method"="GET",
- *     			"path"="/tabel55/{afnemersaanduiding}"
- *     		}
+ *     		"get
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\Tabel55Repository")
