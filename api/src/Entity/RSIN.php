@@ -2,20 +2,19 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
-use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
- * RSIN
- * 
+ * RSIN.
+ *
  * Tevens te vinden via https://openkvk.nl/, te checken via SBI 8411 en naam gelijk aan  "Gemeente XXX"
- * 
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
  *     denormalizationContext={"groups"={"write"}},
@@ -27,7 +26,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *     		"get"={
- *     			"method"="GET", 
+ *     			"method"="GET",
  *     			"path"="/rsin/{id}"
  *     		}
  *     }
@@ -36,31 +35,32 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class RSIN
 {
-	/**
-	 * @var UuidInterface $id The UUID identifier of this object
-	 * @example e2984465-190a-4562-829e-a8cca81aa35d
-	 *
-	 * @ApiProperty(
-	 * 	   identifier=true,
-	 *     attributes={
-	 *         "swagger_context"={
-	 *         	   "description" = "The UUID identifier of this object",
-	 *             "type"="string",
-	 *             "format"="uuid",
-	 *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
-	 *         }
-	 *     }
-	 * )
-	 *
-	 * @Assert\Uuid
-	 * @Groups({"read"})
-	 * @ORM\Id
-	 * @ORM\Column(type="uuid", unique=true)
-	 * @ORM\GeneratedValue(strategy="CUSTOM")
-	 * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
-	 */
-	private $id;
-	
+    /**
+     * @var UuidInterface The UUID identifier of this object
+     *
+     * @example e2984465-190a-4562-829e-a8cca81aa35d
+     *
+     * @ApiProperty(
+     * 	   identifier=true,
+     *     attributes={
+     *         "swagger_context"={
+     *         	   "description" = "The UUID identifier of this object",
+     *             "type"="string",
+     *             "format"="uuid",
+     *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
+     *         }
+     *     }
+     * )
+     *
+     * @Assert\Uuid
+     * @Groups({"read"})
+     * @ORM\Id
+     * @ORM\Column(type="uuid", unique=true)
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
+     */
+    private $id;
+
     /**
      * @var string
      *
@@ -73,23 +73,23 @@ class RSIN
      * @ORM\Column(type="string", length=9, unique=true)
      */
     private $rsin;
-	
-	/**
-	 * @var string
-	 *
+
+    /**
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
-	 * @Groups({"read"})
-	 * @Assert\Length(
-	 *      max = 9,
-	 *      min = 9,
-	 * )
-	 * @ORM\Column(type="string", length=9)
-	 */
-	private $kvk;
-	
-    /**     
-     * @var string 
-     * 
+     * @Groups({"read"})
+     * @Assert\Length(
+     *      max = 9,
+     *      min = 9,
+     * )
+     * @ORM\Column(type="string", length=9)
+     */
+    private $kvk;
+
+    /**
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
      * @Assert\Length(
@@ -98,34 +98,34 @@ class RSIN
      * )
      * @ORM\Column(type="string", length=4)
      */
-	private $gemeenteCode;
+    private $gemeenteCode;
 
-	public function getId()
-	{
-		return $this->id;
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getRSIN(): ?string
     {
-    	return $this->rsin;
+        return $this->rsin;
     }
 
     public function setRSIN(string $RSIN): self
     {
-    	$this->rsin = $RSIN;
+        $this->rsin = $RSIN;
 
         return $this;
     }
-    
+
     public function getKVK(): ?string
     {
         return $this->kvk;
     }
-    
+
     public function setKVK(string $kvk): self
     {
         $this->kvk = $kvk;
-        
+
         return $this;
     }
 
