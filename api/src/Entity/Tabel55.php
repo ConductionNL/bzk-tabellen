@@ -2,17 +2,16 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
-use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PK Afnemers
+ * PK Afnemers.
  *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
@@ -35,36 +34,34 @@ use Doctrine\ORM\Mapping as ORM;
 class Tabel55
 {
     /**
-     *
      * @var string
      *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
-	 * @ApiProperty(identifier=true)
-	 * @ORM\Id
+     * @ApiProperty(identifier=true)
+     * @ORM\Id
      * @Assert\Length(
      *      max = 255,
      * )
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=255, unique=true)
      */
-	private $afnemersaanduiding;
+    private $afnemersaanduiding;
 
-	/**
-	 *
-	 * @var string
-	 *
+    /**
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="partial")
-	 * @Groups({"read"})
-	 * @Assert\Length(
-	 *      max = 255,
-	 * )
-	 * @Assert\NotBlank
-	 * @ORM\Column(type="string", length=255)
-	 */
-	private $omschrijving;
+     * @Groups({"read"})
+     * @Assert\Length(
+     *      max = 255,
+     * )
+     * @Assert\NotBlank
+     * @ORM\Column(type="string", length=255)
+     */
+    private $omschrijving;
 
-	public function getId(): ?string
+    public function getId(): ?string
     {
         return $this->afnemersaanduiding;
     }
