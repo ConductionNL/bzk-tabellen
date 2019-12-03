@@ -24,15 +24,14 @@ This repository uses the power of the [commonground proto component](https://git
 * Support for NLX headers
 * And [much more](https://github.com/ConductionNL/commonground-component) .... 
 
-## License
-
-Copyright � Conduction 2019
-
-Licensed under [EUPL](https://github.com/ConductionNL/bzk-tabellen/blob/master/LICENSE.md)
-
 ## Credits
 
 [![Conduction](https://raw.githubusercontent.com/ConductionNL/bzk-tabellen/master/resources/logo-conduction.svg?sanitize=true "Conduction")](https://www.conduction.nl/)
 
+
+## License
+Copyright � [Gemeente 's-Hertogenbosch](https://www.s-hertogenbosch.nl/) 2019
+
+[Licensed under the EUPL](LICENCE.md)
 
 
