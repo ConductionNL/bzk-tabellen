@@ -23,10 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     		}
  *     },
  *     itemOperations={
- *     		"get"={
- *     			"method"="GET",
- *     			"path"="/tabel55/{afnemersaanduiding}"
- *     		}
+ *     		"get
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\Tabel55Repository")
