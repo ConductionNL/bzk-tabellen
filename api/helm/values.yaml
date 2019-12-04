@@ -95,12 +95,9 @@ ingress:
       # - example.com
       # - mercure.example.com
   hosts:
-    api:
-      host: example.com
-      serviceName: varnish
-    mercure:
-      host: mercure.example.com
-      serviceName: mercure
+    prod:
+      host: ltc.huwelijksplanner.online
+      serviceName: landelijketabbelenregistratie
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

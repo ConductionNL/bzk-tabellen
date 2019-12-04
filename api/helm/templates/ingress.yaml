@@ -24,12 +24,9 @@ spec:
   {{- end }}
 {{- end }}
   rules:
-  {{- range .Values.ingress.hosts }}
-    - host: {{ .host | quote }}
+    - host: ltc.conduction.nl
       http:
         paths:
-          - path: /*
-            backend:
-              serviceName: {{ .serviceName }}
-              servicePort: {{ .servicePort | default 80 }}
-  {{- end }}
+          backend:
+            serviceName: landelijketabbelenregistratie
+            servicePort: 80
