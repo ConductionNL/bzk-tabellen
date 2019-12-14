@@ -4,7 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Tabel55;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
  * @method Tabel55|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class Tabel55Repository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+	public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Tabel55::class);
     }
