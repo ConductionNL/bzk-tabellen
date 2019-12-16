@@ -65,7 +65,7 @@ class Tabel37
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
      * @Assert\Length(
-     *      max = 255,
+     *      max = 255
      * )
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=255, unique=true)
@@ -78,7 +78,7 @@ class Tabel37
      * @ApiFilter(SearchFilter::class, strategy="partial")
      * @Groups({"read"})
      * @Assert\Length(
-     *      max = 255,
+     *      max = 255
      * )
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
@@ -91,7 +91,7 @@ class Tabel37
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
      * @Assert\Length(
-     *      max = 255,
+     *      max = 255
      * )
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)

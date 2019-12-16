@@ -66,7 +66,7 @@ class Tabel33
      * @Groups({"read"})
      * @Assert\Length(
      *      min = 4,
-     *      max = 4,
+     *      max = 4
      * )
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=4, unique=true)
@@ -79,7 +79,7 @@ class Tabel33
      * @ApiFilter(SearchFilter::class, strategy="partial")
      * @Groups({"read"})
      * @Assert\Length(
-     *      max = 255,
+     *      max = 255
      * )
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
@@ -92,7 +92,7 @@ class Tabel33
      * @Groups({"read"})
      * @Assert\Length(
      *      min = 4,
-     *      max = 4,
+     *      max = 4
      * )
      * @ORM\Column(type="string", length=4, nullable=true)
      */

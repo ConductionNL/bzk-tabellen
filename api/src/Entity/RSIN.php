@@ -68,7 +68,7 @@ class RSIN
      * @Groups({"read"})
      * @Assert\Length(
      *      max = 9,
-     *      min = 9,
+     *      min = 9
      * )
      * @ORM\Column(type="string", length=9, unique=true)
      */
@@ -81,7 +81,7 @@ class RSIN
      * @Groups({"read"})
      * @Assert\Length(
      *      max = 9,
-     *      min = 9,
+     *      min = 9
      * )
      * @ORM\Column(type="string", length=9)
      */
@@ -94,7 +94,7 @@ class RSIN
      * @Groups({"read"})
      * @Assert\Length(
      *      max = 4,
-     *      min = 4,
+     *      min = 4
      * )
      * @ORM\Column(type="string", length=4)
      */
