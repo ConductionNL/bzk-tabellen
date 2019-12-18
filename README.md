@@ -26,9 +26,9 @@ This repository uses the power of the [commonground proto component](https://git
 
 ## License
 
-Copyright � Conduction 2019
+Copyright &copy; [Gemeente 's-Hertogenbosch](https://www.s-hertogenbosch.nl/) 2019
 
-Licensed under [EUPL](https://github.com/ConductionNL/bzk-tabellen/blob/master/LICENSE.md)
+Licensed under [EUPL](LICENCE.md)
 
 ## Credits
 

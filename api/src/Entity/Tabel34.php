@@ -2,17 +2,16 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
-use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Landen Tabels
+ * Landen Tabels.
  *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}},
@@ -26,7 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     itemOperations={
  *     		"get"={
  *     			"method"="GET",
- *     			"path"="/tabel34/{landcode}"
+ *     			"path"="/tabel34/{id}"
  *     		}
  *     }
  * )
@@ -34,68 +33,89 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tabel34
 {
+    /**
+     * @var UuidInterface The UUID identifier of this object
+     *
+     * @example e2984465-190a-4562-829e-a8cca81aa35d
+     *
+     * @ApiProperty(
+     * 	   identifier=true,
+     *     attributes={
+     *         "swagger_context"={
+     *         	   "description" = "The UUID identifier of this object",
+     *             "type"="string",
+     *             "format"="uuid",
+     *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
+     *         }
+     *     }
+     * )
+     *
+     * @Assert\Uuid
+     * @Groups({"read"})
+     * @ORM\Id
+     * @ORM\Column(type="uuid", unique=true)
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
+     */
+    private $id;
 
-	/**
-	 *
-	 * @var string
-	 *
+    /**
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
-	 * @ApiProperty(identifier=true)
-	 * @ORM\Id
-	 * @Assert\Length(
-	 *      min = 4,
-	 *      max = 5,
-	 * )
-	 * @Assert\NotBlank
-	 * @ORM\Column(type="string", length=5, unique=true)
-	 */
-	private $landcode;
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 5
+     * )
+     * @Assert\NotBlank
+     * @ORM\Column(type="string", length=5, unique=true)
+     */
+    private $landcode;
 
-	/**
-	 *
-	 * @var string
-	 *
+    /**
+     * @var string
+     *
      * @ApiFilter(SearchFilter::class, strategy="partial")
      * @Groups({"read"})
-	 * @Assert\Length(
-	 *      max = 255,
-	 * )
-	 * @Assert\NotBlank
-	 * @ORM\Column(type="string", length=255)
-	 */
-	private $omschrijving;
+     * @Assert\Length(
+     *      max = 255
+     * )
+     * @Assert\NotBlank
+     * @ORM\Column(type="string", length=255)
+     */
+    private $omschrijving;
 
-	/**
-	 * @var string A "Y-m-d" formatted value
-	 *
+    /**
+     * @var string A "Y-m-d" formatted value
+     *
      * @Groups({"read"})
-	 * @Assert\Date
-	 * @ORM\Column(type="date", nullable=true)
-	 */
-	private $datumIngang;
+     * @Assert\Date
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $datumIngang;
 
-	/**
-	 * @var string A "Y-m-d" formatted value
-	 *
+    /**
+     * @var string A "Y-m-d" formatted value
+     *
      * @Groups({"read"})
-	 * @Assert\Date
-	 * @ORM\Column(type="date", nullable=true)
-	 */
-	private $datumEinde;
+     * @Assert\Date
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $datumEinde;
 
-	/**
-	 * @var string A "Y-m-d" formatted value
-	 *
+    /**
+     * @var string A "Y-m-d" formatted value
+     *
      * @Groups({"read"})
-	 * @Assert\Date
-	 * @ORM\Column(type="date", nullable=true)
-	 */
-	private $fictieveDatumEinde;
+     * @Assert\Date
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $fictieveDatumEinde;
 
-	public function getId(): ?string
+    public function getId()
     {
-        return $this->landcode;
+        return $this->id;
     }
 
     public function getLandcode(): ?string
