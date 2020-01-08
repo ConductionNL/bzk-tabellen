@@ -10,7 +10,7 @@ info:
     - Version: V.0.1
     - Repository: [online](https://github.com/ConductionNL/Proto-component-commonground) / [zip](https://github.com/ConductionNL/Proto-component-commonground/archive/master.zip)
     - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/pc-php) 
-    - Datamodel: [postman](/schema/openapi.postman_collection) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
+    - Datamodel: [postman](/schema/pc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
     
     'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
@@ -121,6 +121,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -310,7 +311,7 @@ paths:
               $ref: '#/components/schemas/ExampleEntity-write'
           application/ld+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/ExampleEntity:jsonld-write'
           application/vnd.api+json:
             schema:
               $ref: '#/components/schemas/ExampleEntity-write'
@@ -3456,6 +3457,8 @@ components:
       properties:
         rsin:
           readOnly: true
+          externalDocs:
+            url: 'http://schema.org/identifier'
           type: string
         kvk:
           readOnly: true
@@ -3468,6 +3471,59 @@ components:
       required:
         - name
       properties:
+        name:
+          description: 'The name of this example property'
+          type: string
+        description:
+          description: 'The description of this example property'
+          type: string
+        camelCase:
+          description: 'Proof that we camel case our api'
+          type: string
+    'ExampleEntity:jsonld-read':
+      type: object
+      description: 'This is an example entity.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        name:
+          description: 'The name of this example property'
+          type: string
+        description:
+          description: 'The description of this example property'
+          type: string
+        camelCase:
+          description: 'Proof that we camel case our api'
+          type: string
+      required:
+        - name
+    'ExampleEntity:jsonld-write':
+      type: object
+      description: 'This is an example entity.'
+      required:
+        - name
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
         name:
           description: 'The name of this example property'
           type: string
