@@ -35,20 +35,7 @@ class Tabel39
 {
     /**
      * @var UuidInterface The UUID identifier of this object
-     *
      * @example e2984465-190a-4562-829e-a8cca81aa35d
-     *
-     * @ApiProperty(
-     * 	   identifier=true,
-     *     attributes={
-     *         "swagger_context"={
-     *         	   "description" = "The UUID identifier of this object",
-     *             "type"="string",
-     *             "format"="uuid",
-     *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
-     *         }
-     *     }
-     * )
      *
      * @Assert\Uuid
      * @Groups({"read"})
@@ -64,7 +51,7 @@ class Tabel39
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
      * @Assert\Length(
-     *      max = 255,
+     *      max = 255
      * )
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=255, unique=true)
@@ -77,7 +64,7 @@ class Tabel39
      * @ApiFilter(SearchFilter::class, strategy="partial")
      * @Groups({"read"})
      * @Assert\Length(
-     *      max = 255,
+     *      max = 255
      * )
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)

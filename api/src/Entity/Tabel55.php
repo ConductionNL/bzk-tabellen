@@ -38,7 +38,7 @@ class Tabel55
      * @ApiProperty(identifier=true)
      * @ORM\Id
      * @Assert\Length(
-     *      max = 255,
+     *      max = 255
      * )
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=255, unique=true)
@@ -51,7 +51,7 @@ class Tabel55
      * @ApiFilter(SearchFilter::class, strategy="partial")
      * @Groups({"read"})
      * @Assert\Length(
-     *      max = 255,
+     *      max = 255
      * )
      * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)

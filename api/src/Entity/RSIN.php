@@ -37,20 +37,7 @@ class RSIN
 {
     /**
      * @var UuidInterface The UUID identifier of this object
-     *
      * @example e2984465-190a-4562-829e-a8cca81aa35d
-     *
-     * @ApiProperty(
-     * 	   identifier=true,
-     *     attributes={
-     *         "swagger_context"={
-     *         	   "description" = "The UUID identifier of this object",
-     *             "type"="string",
-     *             "format"="uuid",
-     *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
-     *         }
-     *     }
-     * )
      *
      * @Assert\Uuid
      * @Groups({"read"})
@@ -68,7 +55,7 @@ class RSIN
      * @Groups({"read"})
      * @Assert\Length(
      *      max = 9,
-     *      min = 9,
+     *      min = 9
      * )
      * @ORM\Column(type="string", length=9, unique=true)
      */
@@ -81,7 +68,7 @@ class RSIN
      * @Groups({"read"})
      * @Assert\Length(
      *      max = 9,
-     *      min = 9,
+     *      min = 9
      * )
      * @ORM\Column(type="string", length=9)
      */
@@ -94,7 +81,7 @@ class RSIN
      * @Groups({"read"})
      * @Assert\Length(
      *      max = 4,
-     *      min = 4,
+     *      min = 4
      * )
      * @ORM\Column(type="string", length=4)
      */
