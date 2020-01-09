@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\ORM\Mapping as ORM;
@@ -35,6 +34,7 @@ class Tabel37
 {
     /**
      * @var UuidInterface The UUID identifier of this object
+     *
      * @example e2984465-190a-4562-829e-a8cca81aa35d
      *
      * @Assert\Uuid
