@@ -52,10 +52,10 @@ class Tabel49
      * @ApiFilter(SearchFilter::class, strategy="exact")
      * @Groups({"read"})
      * @Assert\Length(
-     *      max = 255
+     *      max = 191
      * )
      * @Assert\NotBlank
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=191, unique=true)
      */
     private $autoriteitVanAfgifte;
 
