@@ -23,7 +23,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     		}
  *     },
  *     itemOperations={
- *     		"get
+ *     		"get"={
+ *     			"method"="GET",
+ *     			"path"="/tabel55/{id}"
+ *     		}
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\Tabel55Repository")
@@ -41,7 +44,7 @@ class Tabel55
      *      max = 255
      * )
      * @Assert\NotBlank
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true, options={"collation":"utf8_bin"})
      */
     private $afnemersaanduiding;
 

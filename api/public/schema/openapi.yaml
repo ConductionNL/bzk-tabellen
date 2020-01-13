@@ -1,16 +1,16 @@
 openapi: 3.0.2
 info:
-  title: 'Landelijke Tabbelen Registratie'
+  title: 'Landelijke Tabbelen Component'
   version: V.0.1
   description: |
     API Details
-    - Component: Landelijke Tabbelen Registratie
-    - Reference: ltr
+    - Component: Landelijke Tabbelen Component
+    - Reference: ltc
     - Enviroment: dev
     - Version: V.0.1
     - Repository: [online](https://github.com/ConductionNL/Proto-component-commonground) / [zip](https://github.com/ConductionNL/Proto-component-commonground/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/pc-php) 
-    - Datamodel: [postman](/schema/pc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
+    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/ltc-php) 
+    - Datamodel: [postman](/schema/ltc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
     
     'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
@@ -32,9 +32,14 @@ paths:
                   $ref: '#/components/schemas/RSIN-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/RSIN-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/RSIN:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -195,7 +200,8 @@ paths:
           in: query
       produces:
         - application/health+json
-    post:
+  '/rsin/{id}':
+    get:
       tags:
         - RSIN
       operationId: getRSINItem
@@ -233,8 +239,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -283,7 +293,7 @@ paths:
                 $ref: '#/components/schemas/RSIN-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/RSIN-read'
+                $ref: '#/components/schemas/RSIN:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/RSIN-read'
@@ -304,64 +314,9 @@ paths:
                 $ref: '#/components/schemas/RSIN-read'
         404:
           description: 'Resource not found'
-      requestBody:
-        content:
-          application/hal+json:
-            schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
-          application/ld+json:
-            schema:
-              $ref: '#/components/schemas/ExampleEntity:jsonld-write'
-          application/vnd.api+json:
-            schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
-          application/x-yaml:
-            schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
-          text/csv:
-            schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
-          text/html:
-            schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
-        description: 'The new ExampleEntity resource'
-      parameters:
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-NLX-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
-  '/example_entities/{id}':
+      produces:
+        - application/health+json
+  /tabel32:
     get:
       tags:
         - Tabel32
@@ -378,9 +333,14 @@ paths:
                   $ref: '#/components/schemas/Tabel32-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel32-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel32:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -441,6 +401,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -467,8 +428,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -508,7 +473,9 @@ paths:
             type: string
             format: date-time
           in: query
-  '/tabel32/{nationaliteitcode}':
+      produces:
+        - application/health+json
+  '/tabel32/{id}':
     get:
       tags:
         - Tabel32
@@ -601,7 +568,7 @@ paths:
                 $ref: '#/components/schemas/Tabel32-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel32-read'
+                $ref: '#/components/schemas/Tabel32:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel32-read'
@@ -622,6 +589,8 @@ paths:
                 $ref: '#/components/schemas/Tabel32-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
   /tabel33:
     get:
       tags:
@@ -639,9 +608,14 @@ paths:
                   $ref: '#/components/schemas/Tabel33-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel33-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel33:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -702,6 +676,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -728,8 +703,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -769,7 +748,9 @@ paths:
             type: string
             format: date-time
           in: query
-  '/tabel33/{gemeentecodes}':
+      produces:
+        - application/health+json
+  '/tabel33/{id}':
     get:
       tags:
         - Tabel33
@@ -808,8 +789,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -858,7 +843,7 @@ paths:
                 $ref: '#/components/schemas/Tabel33-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel33-read'
+                $ref: '#/components/schemas/Tabel33:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel33-read'
@@ -879,6 +864,8 @@ paths:
                 $ref: '#/components/schemas/Tabel33-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
   /tabel34:
     get:
       tags:
@@ -896,9 +883,14 @@ paths:
                   $ref: '#/components/schemas/Tabel34-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel34-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel34:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -959,6 +951,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -985,8 +978,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -1026,7 +1023,9 @@ paths:
             type: string
             format: date-time
           in: query
-  '/tabel34/{landcode}':
+      produces:
+        - application/health+json
+  '/tabel34/{id}':
     get:
       tags:
         - Tabel34
@@ -1065,8 +1064,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -1115,7 +1118,7 @@ paths:
                 $ref: '#/components/schemas/Tabel34-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel34-read'
+                $ref: '#/components/schemas/Tabel34:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel34-read'
@@ -1136,6 +1139,8 @@ paths:
                 $ref: '#/components/schemas/Tabel34-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
   /tabel36:
     get:
       tags:
@@ -1153,9 +1158,14 @@ paths:
                   $ref: '#/components/schemas/Tabel36-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel36-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel36:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -1200,6 +1210,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -1226,8 +1237,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -1267,7 +1282,9 @@ paths:
             type: string
             format: date-time
           in: query
-  '/tabel36/{voorvoegsel}':
+      produces:
+        - application/health+json
+  '/tabel36/{id}':
     get:
       tags:
         - Tabel36
@@ -1308,6 +1325,10 @@ paths:
         -
           name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -1356,7 +1377,7 @@ paths:
                 $ref: '#/components/schemas/Tabel36-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel36-read'
+                $ref: '#/components/schemas/Tabel36:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel36-read'
@@ -1377,6 +1398,8 @@ paths:
                 $ref: '#/components/schemas/Tabel36-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
   /tabel37:
     get:
       tags:
@@ -1394,9 +1417,14 @@ paths:
                   $ref: '#/components/schemas/Tabel37-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel37-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel37:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -1473,6 +1501,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -1499,8 +1528,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -1540,7 +1573,9 @@ paths:
             type: string
             format: date-time
           in: query
-  '/tabel37/{reden}':
+      produces:
+        - application/health+json
+  '/tabel37/{id}':
     get:
       tags:
         - Tabel37
@@ -1581,6 +1616,10 @@ paths:
         -
           name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -1629,7 +1668,7 @@ paths:
                 $ref: '#/components/schemas/Tabel37-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel37-read'
+                $ref: '#/components/schemas/Tabel37:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel37-read'
@@ -1650,6 +1689,8 @@ paths:
                 $ref: '#/components/schemas/Tabel37-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
   /tabel38:
     get:
       tags:
@@ -1667,9 +1708,14 @@ paths:
                   $ref: '#/components/schemas/Tabel38-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel38-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel38:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -1730,6 +1776,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -1756,8 +1803,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -1797,7 +1848,9 @@ paths:
             type: string
             format: date-time
           in: query
-  '/tabel38/{adellijkeTitelPredikaat}':
+      produces:
+        - application/health+json
+  '/tabel38/{id}':
     get:
       tags:
         - Tabel38
@@ -1836,8 +1889,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -1886,7 +1943,7 @@ paths:
                 $ref: '#/components/schemas/Tabel38-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel38-read'
+                $ref: '#/components/schemas/Tabel38:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel38-read'
@@ -1907,6 +1964,8 @@ paths:
                 $ref: '#/components/schemas/Tabel38-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
   /tabel39:
     get:
       tags:
@@ -1924,9 +1983,14 @@ paths:
                   $ref: '#/components/schemas/Tabel39-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel39-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel39:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -1987,6 +2051,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -2013,8 +2078,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -2054,7 +2123,9 @@ paths:
             type: string
             format: date-time
           in: query
-  '/tabel39/{akteaanduiding}':
+      produces:
+        - application/health+json
+  '/tabel39/{id}':
     get:
       tags:
         - Tabel39
@@ -2093,8 +2164,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -2143,7 +2218,7 @@ paths:
                 $ref: '#/components/schemas/Tabel39-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel39-read'
+                $ref: '#/components/schemas/Tabel39:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel39-read'
@@ -2164,6 +2239,8 @@ paths:
                 $ref: '#/components/schemas/Tabel39-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
   /tabel41:
     get:
       tags:
@@ -2181,9 +2258,14 @@ paths:
                   $ref: '#/components/schemas/Tabel41-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel41-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel41:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -2244,6 +2326,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -2270,8 +2353,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -2311,7 +2398,9 @@ paths:
             type: string
             format: date-time
           in: query
-  '/tabel41/{reden}':
+      produces:
+        - application/health+json
+  '/tabel41/{id}':
     get:
       tags:
         - Tabel41
@@ -2350,8 +2439,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -2400,7 +2493,7 @@ paths:
                 $ref: '#/components/schemas/Tabel41-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel41-read'
+                $ref: '#/components/schemas/Tabel41:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel41-read'
@@ -2421,6 +2514,8 @@ paths:
                 $ref: '#/components/schemas/Tabel41-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
   /tabel48:
     get:
       tags:
@@ -2438,9 +2533,14 @@ paths:
                   $ref: '#/components/schemas/Tabel48-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel48-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel48:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -2501,6 +2601,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -2527,8 +2628,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -2568,7 +2673,9 @@ paths:
             type: string
             format: date-time
           in: query
-  '/tabel48/{nederlandsReisdocuments}':
+      produces:
+        - application/health+json
+  '/tabel48/{id}':
     get:
       tags:
         - Tabel48
@@ -2607,8 +2714,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -2657,7 +2768,7 @@ paths:
                 $ref: '#/components/schemas/Tabel48-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel48-read'
+                $ref: '#/components/schemas/Tabel48:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel48-read'
@@ -2678,6 +2789,8 @@ paths:
                 $ref: '#/components/schemas/Tabel48-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
   /tabel49:
     get:
       tags:
@@ -2695,9 +2808,14 @@ paths:
                   $ref: '#/components/schemas/Tabel49-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel49-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel49:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -2758,6 +2876,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -2784,8 +2903,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -2825,7 +2948,9 @@ paths:
             type: string
             format: date-time
           in: query
-  '/tabel49/{autoriteitVanAfgifte}':
+      produces:
+        - application/health+json
+  '/tabel49/{id}':
     get:
       tags:
         - Tabel49
@@ -2864,8 +2989,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -2914,7 +3043,7 @@ paths:
                 $ref: '#/components/schemas/Tabel49-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel49-read'
+                $ref: '#/components/schemas/Tabel49:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel49-read'
@@ -2935,6 +3064,8 @@ paths:
                 $ref: '#/components/schemas/Tabel49-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
   /tabel55:
     get:
       tags:
@@ -2952,9 +3083,14 @@ paths:
                   $ref: '#/components/schemas/Tabel55-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel55-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel55:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -3015,6 +3151,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -3041,8 +3178,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -3082,7 +3223,9 @@ paths:
             type: string
             format: date-time
           in: query
-  '/tabel55/{afnemersaanduiding}':
+      produces:
+        - application/health+json
+  '/tabel55/{id}':
     get:
       tags:
         - Tabel55
@@ -3121,8 +3264,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -3171,7 +3318,7 @@ paths:
                 $ref: '#/components/schemas/Tabel55-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel55-read'
+                $ref: '#/components/schemas/Tabel55:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel55-read'
@@ -3192,6 +3339,8 @@ paths:
                 $ref: '#/components/schemas/Tabel55-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
   /tabel56:
     get:
       tags:
@@ -3209,9 +3358,14 @@ paths:
                   $ref: '#/components/schemas/Tabel56-read'
             application/ld+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tabel56-read'
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Tabel56:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
             application/vnd.api+json:
               schema:
                 type: array
@@ -3272,6 +3426,7 @@ paths:
           description: 'The collection page number'
           schema:
             type: integer
+            default: 1
         -
           name: Authorization
           description: 'The JWT of the entity performing the request'
@@ -3298,8 +3453,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -3339,6 +3498,8 @@ paths:
             type: string
             format: date-time
           in: query
+      produces:
+        - application/health+json
   '/tabel56/{verblijfstitel}':
     get:
       tags:
@@ -3378,8 +3539,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -3428,7 +3593,7 @@ paths:
                 $ref: '#/components/schemas/Tabel56-read'
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/Tabel56-read'
+                $ref: '#/components/schemas/Tabel56:jsonld-read'
             application/vnd.api+json:
               schema:
                 $ref: '#/components/schemas/Tabel56-read'
@@ -3449,40 +3614,32 @@ paths:
                 $ref: '#/components/schemas/Tabel56-read'
         404:
           description: 'Resource not found'
+      produces:
+        - application/health+json
 components:
   schemas:
     RSIN-read:
       type: object
-      description: RSIN
+      description: RSIN.
       properties:
-        rsin:
+        id:
           readOnly: true
+          description: 'The UUID identifier of this object'
           externalDocs:
             url: 'http://schema.org/identifier'
+          type: string
+        rsin:
+          readOnly: true
           type: string
         kvk:
           readOnly: true
           type: string
-      required:
-        - name
-    ExampleEntity-write:
+        gemeenteCode:
+          readOnly: true
+          type: string
+    'RSIN:jsonld-read':
       type: object
-      description: 'This is an example entity.'
-      required:
-        - name
-      properties:
-        name:
-          description: 'The name of this example property'
-          type: string
-        description:
-          description: 'The description of this example property'
-          type: string
-        camelCase:
-          description: 'Proof that we camel case our api'
-          type: string
-    'ExampleEntity:jsonld-read':
-      type: object
-      description: 'This is an example entity.'
+      description: RSIN.
       properties:
         '@context':
           readOnly: true
@@ -3495,25 +3652,52 @@ components:
           type: string
         id:
           readOnly: true
+          description: 'The UUID identifier of this object'
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
-        name:
-          description: 'The name of this example property'
+        rsin:
+          readOnly: true
           type: string
-        description:
-          description: 'The description of this example property'
+        kvk:
+          readOnly: true
           type: string
-        camelCase:
-          description: 'Proof that we camel case our api'
+        gemeenteCode:
+          readOnly: true
           type: string
-      required:
-        - name
-    'ExampleEntity:jsonld-write':
+    Tabel32-read:
       type: object
-      description: 'This is an example entity.'
-      required:
-        - name
+      description: Nationaliteitcodes.
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        nationaliteitcode:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    'Tabel32:jsonld-read':
+      type: object
+      description: Nationaliteitcodes.
       properties:
         '@context':
           readOnly: true
@@ -3524,67 +3708,915 @@ components:
         '@type':
           readOnly: true
           type: string
-        name:
-          description: 'The name of this example property'
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
           type: string
-        description:
-          description: 'The description of this example property'
+        nationaliteitcode:
+          readOnly: true
           type: string
-        camelCase:
-          description: 'Proof that we camel case our api'
+        omschrijving:
+          readOnly: true
           type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    Tabel33-read:
+      type: object
+      description: Gemeentecodes.
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        gemeentecode:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        nieuweCode:
+          readOnly: true
+          type: string
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    'Tabel33:jsonld-read':
+      type: object
+      description: Gemeentecodes.
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        gemeentecode:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        nieuweCode:
+          readOnly: true
+          type: string
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    Tabel34-read:
+      type: object
+      description: 'Landen Tabels.'
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        landcode:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        fictieveDatumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    'Tabel34:jsonld-read':
+      type: object
+      description: 'Landen Tabels.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        landcode:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        fictieveDatumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    Tabel36-read:
+      type: object
+      description: Voorvoegsels.
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        voorvoegsel:
+          readOnly: true
+          type: string
+    'Tabel36:jsonld-read':
+      type: object
+      description: Voorvoegsels.
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        voorvoegsel:
+          readOnly: true
+          type: string
+    Tabel37-read:
+      type: object
+      description: redenOpnemenBeeindigenNationaliteit.
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        reden:
+          readOnly: true
+          description: redenOpnemenBeeindigenNationaliteit
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        soort:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    'Tabel37:jsonld-read':
+      type: object
+      description: redenOpnemenBeeindigenNationaliteit.
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        reden:
+          readOnly: true
+          description: redenOpnemenBeeindigenNationaliteit
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        soort:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    Tabel38-read:
+      type: object
+      description: 'Adellijke titel/predikaat.'
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        adellijkeTitelPredikaat:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        soort:
+          readOnly: true
+          type: string
+    'Tabel38:jsonld-read':
+      type: object
+      description: 'Adellijke titel/predikaat.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        adellijkeTitelPredikaat:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        soort:
+          readOnly: true
+          type: string
+    Tabel39-read:
+      type: object
+      description: Akteaanduiding.
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        akteaanduiding:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+    'Tabel39:jsonld-read':
+      type: object
+      description: Akteaanduiding.
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        akteaanduiding:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+    Tabel41-read:
+      type: object
+      description: 'Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap.'
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        reden:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    'Tabel41:jsonld-read':
+      type: object
+      description: 'Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        reden:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    Tabel48-read:
+      type: object
+      description: 'Nederlands reisdocument.'
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        nederlandsReisdocument:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    'Tabel48:jsonld-read':
+      type: object
+      description: 'Nederlands reisdocument.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        nederlandsReisdocument:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    Tabel49-read:
+      type: object
+      description: 'Autoriteit van afgifte Nederlands reisdocument.'
+      properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        autoriteitVanAfgifte:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    'Tabel49:jsonld-read':
+      type: object
+      description: 'Autoriteit van afgifte Nederlands reisdocument.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+        autoriteitVanAfgifte:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    Tabel55-read:
+      type: object
+      description: 'PK Afnemers.'
+      properties:
+        afnemersaanduiding:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+    'Tabel55:jsonld-read':
+      type: object
+      description: 'PK Afnemers.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        afnemersaanduiding:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+    Tabel56-read:
+      type: object
+      description: Verblijfstitel.
+      properties:
+        verblijfstitel:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+    'Tabel56:jsonld-read':
+      type: object
+      description: Verblijfstitel.
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        verblijfstitel:
+          readOnly: true
+          type: string
+        omschrijving:
+          readOnly: true
+          type: string
+        datumIngang:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
+        datumEinde:
+          readOnly: true
+          description: 'A "Y-m-d" formatted value'
+          externalDocs:
+            url: 'http://schema.org/Date'
+          type: string
+          format: date-time
 definitions:
-  ExampleEntity-read:
+  RSIN-read:
     properties:
       id:
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      name:
-        example: 'My Group'
-        maxLength: 255
-      description:
-        example: 'Is the best group ever'
-        maxLength: 2555
-      camelCase:
-        example: 'Best api ever'
-        maxLength: 255
-    required:
-      - name
-  ExampleEntity-write:
+      rsin:
+        maxLength: 9
+        minLength: 9
+      kvk:
+        maxLength: 9
+        minLength: 9
+      gemeenteCode:
+        maxLength: 4
+        minLength: 4
+    required: []
+  Tabel32-read:
     properties:
-      name:
-        example: 'My Group'
+      id:
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      nationaliteitcode:
+        maxLength: 5
+        minLength: 4
+      omschrijving:
         maxLength: 255
-      description:
-        example: 'Is the best group ever'
-        maxLength: 2555
-      camelCase:
-        example: 'Best api ever'
+      datumIngang: []
+      datumEinde: []
+    required: []
+  Tabel33-read:
+    properties:
+      id:
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      gemeentecode:
+        maxLength: 4
+        minLength: 4
+      omschrijving:
         maxLength: 255
-    required:
-      - name
+      nieuweCode:
+        maxLength: 4
+        minLength: 4
+      datumEinde: []
+    required: []
+  Tabel34-read:
+    properties:
+      id:
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      landcode:
+        maxLength: 5
+        minLength: 4
+      omschrijving:
+        maxLength: 255
+      datumIngang: []
+      datumEinde: []
+      fictieveDatumEinde: []
+    required: []
+  Tabel36-read:
+    properties:
+      id:
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      voorvoegsel:
+        maxLength: 255
+    required: []
+  Tabel37-read:
+    properties:
+      id:
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      reden:
+        maxLength: 255
+      omschrijving:
+        maxLength: 255
+      soort:
+        maxLength: 255
+      datumIngang: []
+      datumEinde: []
+    required: []
+  Tabel38-read:
+    properties:
+      id:
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      adellijkeTitelPredikaat:
+        maxLength: 255
+      omschrijving:
+        maxLength: 255
+      soort:
+        maxLength: 255
+    required: []
+  Tabel39-read:
+    properties:
+      id:
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      akteaanduiding:
+        maxLength: 255
+      omschrijving:
+        maxLength: 255
+    required: []
+  Tabel41-read:
+    properties:
+      id:
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      reden:
+        maxLength: 255
+      omschrijving:
+        maxLength: 255
+      datumIngang: []
+      datumEinde: []
+    required: []
+  Tabel48-read:
+    properties:
+      id:
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      nederlandsReisdocument:
+        maxLength: 255
+      omschrijving:
+        maxLength: 255
+      datumIngang: []
+      datumEinde: []
+    required: []
+  Tabel49-read:
+    properties:
+      id:
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      autoriteitVanAfgifte:
+        maxLength: 191
+      omschrijving:
+        maxLength: 255
+      datumIngang: []
+      datumEinde: []
+    required: []
+  Tabel55-read:
+    properties:
+      afnemersaanduiding:
+        maxLength: 255
+      omschrijving:
+        maxLength: 255
+    required: []
+  Tabel56-read:
+    properties:
+      verblijfstitel:
+        maxLength: 255
+      omschrijving:
+        maxLength: 255
+      datumIngang: []
+      datumEinde: []
+    required: []
 tags:
   -
-    name: ExampleEntity
+    name: RSIN
     description: |
-      This is an example entity.
+      RSIN.
       
-      With an adtional description, all in all its pritty nice [url](www.google.nl)
+      Tevens te vinden via https://openkvk.nl/, te checken via SBI 8411 en naam gelijk aan  "Gemeente XXX"
+  -
+    name: Tabel32
+    description: |
+      Nationaliteitcodes.
+      
+      
+  -
+    name: Tabel33
+    description: |
+      Gemeentecodes.
+      
+      
+  -
+    name: Tabel34
+    description: |
+      Landen Tabels.
+      
+      
+  -
+    name: Tabel36
+    description: |
+      Voorvoegsels.
+      
+      
+  -
+    name: Tabel37
+    description: |
+      redenOpnemenBeeindigenNationaliteit.
+      
+      
+  -
+    name: Tabel38
+    description: |
+      Adellijke titel/predikaat.
+      
+      
+  -
+    name: Tabel39
+    description: |
+      Akteaanduiding.
+      
+      
+  -
+    name: Tabel41
+    description: |
+      Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap.
+      
+      
+  -
+    name: Tabel48
+    description: |
+      Nederlands reisdocument.
+      
+      
+  -
+    name: Tabel49
+    description: |
+      Autoriteit van afgifte Nederlands reisdocument.
+      
+      
+  -
+    name: Tabel55
+    description: |
+      PK Afnemers.
+      
+      
+  -
+    name: Tabel56
+    description: |
+      Verblijfstitel.
+      
+      
 securityDefinitions:
   JWT-Oauth:
     type: oauth2
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the ExampleEntity resource'
-      write: 'write right to the ExampleEntity resource'
+      read: 'read right to the Tabel56 resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the ExampleEntity resource'
-      write: 'write right to the ExampleEntity resource'
+      read: 'read right to the Tabel56 resource'
 host: irc.zaakonline.nl
 servers:
   -
