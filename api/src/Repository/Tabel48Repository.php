@@ -14,7 +14,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  */
 class Tabel48Repository extends ServiceEntityRepository
 {
-	public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Tabel48::class);
     }
