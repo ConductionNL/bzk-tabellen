@@ -56,7 +56,7 @@ class Tabel55
      *      max = 255
      * )
      * @Assert\NotBlank
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $afnemersaanduiding;
 
