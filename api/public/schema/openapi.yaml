@@ -4375,155 +4375,299 @@ definitions:
   RSIN-read:
     properties:
       id:
+        description: 'The UUID identifier of this object'
+        type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       rsin:
+        description: ''
+        type: string
         maxLength: 9
         minLength: 9
       kvk:
+        description: ''
+        type: string
         maxLength: 9
         minLength: 9
       gemeenteCode:
+        description: ''
+        type: string
         maxLength: 4
         minLength: 4
     required: []
   Tabel32-read:
     properties:
       id:
+        description: 'The UUID identifier of this object'
+        type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       nationaliteitcode:
+        description: ''
+        type: string
         maxLength: 5
         minLength: 4
       omschrijving:
+        description: ''
+        type: string
         maxLength: 255
-      datumIngang: []
-      datumEinde: []
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
     required: []
   Tabel33-read:
     properties:
       id:
+        description: 'The UUID identifier of this object'
+        type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       gemeentecode:
+        description: ''
+        type: string
         maxLength: 4
         minLength: 4
       omschrijving:
+        description: ''
+        type: string
         maxLength: 255
       nieuweCode:
+        description: ''
+        type: string
         maxLength: 4
         minLength: 4
-      datumEinde: []
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
     required: []
   Tabel34-read:
     properties:
       id:
+        description: 'The UUID identifier of this object'
+        type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       landcode:
+        description: ''
+        type: string
         maxLength: 5
         minLength: 4
       omschrijving:
+        description: ''
+        type: string
         maxLength: 255
-      datumIngang: []
-      datumEinde: []
-      fictieveDatumEinde: []
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
+      fictieveDatumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
     required: []
   Tabel36-read:
     properties:
       id:
+        description: 'The UUID identifier of this object'
+        type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       voorvoegsel:
+        description: ''
+        type: string
         maxLength: 255
     required: []
   Tabel37-read:
     properties:
       id:
+        description: 'The UUID identifier of this object'
+        type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       reden:
+        description: redenOpnemenBeeindigenNationaliteit
+        type: string
         maxLength: 255
       omschrijving:
+        description: ''
+        type: string
         maxLength: 255
       soort:
+        description: ''
+        type: string
         maxLength: 255
-      datumIngang: []
-      datumEinde: []
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
     required: []
   Tabel38-read:
     properties:
       id:
+        description: 'The UUID identifier of this object'
+        type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       adellijkeTitelPredikaat:
+        description: ''
+        type: string
         maxLength: 255
       omschrijving:
+        description: ''
+        type: string
         maxLength: 255
       soort:
+        description: ''
+        type: string
         maxLength: 255
     required: []
   Tabel39-read:
     properties:
       id:
+        description: 'The UUID identifier of this object'
+        type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       akteaanduiding:
+        description: ''
+        type: string
         maxLength: 255
       omschrijving:
+        description: ''
+        type: string
         maxLength: 255
     required: []
   Tabel41-read:
     properties:
       id:
+        description: 'The UUID identifier of this object'
+        type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       reden:
+        description: ''
+        type: string
         maxLength: 255
       omschrijving:
+        description: ''
+        type: string
         maxLength: 255
-      datumIngang: []
-      datumEinde: []
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
     required: []
   Tabel48-read:
     properties:
       id:
+        description: 'The UUID identifier of this object'
+        type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       nederlandsReisdocument:
+        description: ''
+        type: string
         maxLength: 255
       omschrijving:
+        description: ''
+        type: string
         maxLength: 255
-      datumIngang: []
-      datumEinde: []
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
     required: []
   Tabel49-read:
     properties:
       id:
+        description: 'The UUID identifier of this object'
+        type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       autoriteitVanAfgifte:
+        description: ''
+        type: string
         maxLength: 191
       omschrijving:
+        description: ''
+        type: string
         maxLength: 255
-      datumIngang: []
-      datumEinde: []
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
     required: []
   Tabel55-read:
     properties:
       afnemersaanduiding:
+        description: ''
+        type: string
         maxLength: 255
       omschrijving:
+        description: ''
+        type: string
         maxLength: 255
     required: []
   Tabel56-read:
     properties:
       verblijfstitel:
+        description: ''
+        type: string
         maxLength: 255
       omschrijving:
+        description: ''
+        type: string
         maxLength: 255
-      datumIngang: []
-      datumEinde: []
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2020-01-13'
     required: []
 tags:
   -
