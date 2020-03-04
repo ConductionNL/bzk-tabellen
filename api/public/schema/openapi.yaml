@@ -4328,14 +4328,14 @@ components:
           readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
-            url: 'http://schema.org/Date'
+            url: 'http://schema.org/DateTime'
           type: string
           format: date-time
         datumEinde:
           readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
-            url: 'http://schema.org/Date'
+            url: 'http://schema.org/DateTime'
           type: string
           format: date-time
     'Tabel56:jsonld-read':
@@ -4361,14 +4361,14 @@ components:
           readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
-            url: 'http://schema.org/Date'
+            url: 'http://schema.org/DateTime'
           type: string
           format: date-time
         datumEinde:
           readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
-            url: 'http://schema.org/Date'
+            url: 'http://schema.org/DateTime'
           type: string
           format: date-time
 definitions:
@@ -4415,12 +4415,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
     required: []
   Tabel33-read:
     properties:
@@ -4447,7 +4447,7 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
     required: []
   Tabel34-read:
     properties:
@@ -4469,17 +4469,17 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
       fictieveDatumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
     required: []
   Tabel36-read:
     properties:
@@ -4516,12 +4516,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
     required: []
   Tabel38-read:
     properties:
@@ -4578,12 +4578,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
     required: []
   Tabel48-read:
     properties:
@@ -4604,12 +4604,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
     required: []
   Tabel49-read:
     properties:
@@ -4630,12 +4630,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-04'
     required: []
   Tabel55-read:
     properties:
@@ -4661,13 +4661,13 @@ definitions:
       datumIngang:
         description: 'A "Y-m-d" formatted value'
         type: string
-        format: date
-        example: '2020-01-13'
+        format: date-time
+        example: '2020-03-04 10:24:38'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
-        format: date
-        example: '2020-01-13'
+        format: date-time
+        example: '2020-03-04 10:24:38'
     required: []
 tags:
   -
