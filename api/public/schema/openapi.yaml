@@ -4377,7 +4377,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       rsin:
         description: ''
@@ -4400,7 +4400,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       nationaliteitcode:
         description: ''
@@ -4427,7 +4427,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       gemeentecode:
         description: ''
@@ -4454,7 +4454,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       landcode:
         description: ''
@@ -4486,7 +4486,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       voorvoegsel:
         description: ''
@@ -4498,7 +4498,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       reden:
         description: redenOpnemenBeeindigenNationaliteit
@@ -4528,7 +4528,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       adellijkeTitelPredikaat:
         description: ''
@@ -4548,7 +4548,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       akteaanduiding:
         description: ''
@@ -4564,7 +4564,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       reden:
         description: ''
@@ -4590,7 +4590,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       nederlandsReisdocument:
         description: ''
@@ -4616,7 +4616,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       autoriteitVanAfgifte:
         description: ''
@@ -4661,13 +4661,15 @@ definitions:
       datumIngang:
         description: 'A "Y-m-d" formatted value'
         type: string
+        eaxample: '#/components/schemas/DateTime-read'
         format: date-time
-        example: '2020-03-04 10:24:38'
+        example: '2020-03-04T10:44:31+00:00'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
+        eaxample: '#/components/schemas/DateTime-read'
         format: date-time
-        example: '2020-03-04 10:24:38'
+        example: '2020-03-04T10:44:31+00:00'
     required: []
 tags:
   -
