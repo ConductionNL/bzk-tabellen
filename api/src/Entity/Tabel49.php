@@ -55,7 +55,7 @@ class Tabel49
      *      max = 191
      * )
      * @Assert\NotBlank
-     * @ORM\Column(type="string", length=191, unique=true)
+     * @ORM\Column(type="string", unique=true)
      */
     private $autoriteitVanAfgifte;
 

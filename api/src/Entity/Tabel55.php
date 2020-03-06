@@ -44,7 +44,7 @@ class Tabel55
      *      max = 255
      * )
      * @Assert\NotBlank
-     * @ORM\Column(type="string", length=255, unique=true, options={"collation":"utf8_bin"})
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $afnemersaanduiding;
 
