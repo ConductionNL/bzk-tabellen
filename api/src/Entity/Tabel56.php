@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -74,19 +75,19 @@ class Tabel56
     private $omschrijving;
 
     /**
-     * @var string A "Y-m-d" formatted value
+     * @var DateTime A "Y-m-d" formatted value
      *
      * @Groups({"read"})
-     * @Assert\Date
+     * @Assert\DateTime
      * @ORM\Column(type="date", nullable=true)
      */
     private $datumIngang;
 
     /**
-     * @var string A "Y-m-d" formatted value
+     * @var DateTime A "Y-m-d" formatted value
      *
      * @Groups({"read"})
-     * @Assert\Date
+     * @Assert\DateTime
      * @ORM\Column(type="date", nullable=true)
      */
     private $datumEinde;

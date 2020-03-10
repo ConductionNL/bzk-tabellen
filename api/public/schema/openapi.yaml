@@ -25,6 +25,16 @@ paths:
         200:
           description: 'RSIN collection response'
           content:
+            application/health+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExampleEntity-read'
             application/hal+json:
               schema:
                 type: array
@@ -35,6 +45,26 @@ paths:
                 type: object
                 properties:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/RSIN:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/json+ld:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/ExampleEntity:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/json+ld:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/ExampleEntity:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
@@ -288,6 +318,12 @@ paths:
         200:
           description: 'RSIN resource response'
           content:
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/RSIN-read'
@@ -563,6 +599,12 @@ paths:
         200:
           description: 'Tabel32 resource response'
           content:
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Tabel32-read'
@@ -838,6 +880,12 @@ paths:
         200:
           description: 'Tabel33 resource response'
           content:
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Tabel33-read'
@@ -1113,6 +1161,12 @@ paths:
         200:
           description: 'Tabel34 resource response'
           content:
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Tabel34-read'
@@ -1372,6 +1426,12 @@ paths:
         200:
           description: 'Tabel36 resource response'
           content:
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Tabel36-read'
@@ -4328,14 +4388,14 @@ components:
           readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
-            url: 'http://schema.org/Date'
+            url: 'http://schema.org/DateTime'
           type: string
           format: date-time
         datumEinde:
           readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
-            url: 'http://schema.org/Date'
+            url: 'http://schema.org/DateTime'
           type: string
           format: date-time
     'Tabel56:jsonld-read':
@@ -4361,14 +4421,14 @@ components:
           readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
-            url: 'http://schema.org/Date'
+            url: 'http://schema.org/DateTime'
           type: string
           format: date-time
         datumEinde:
           readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
-            url: 'http://schema.org/Date'
+            url: 'http://schema.org/DateTime'
           type: string
           format: date-time
 definitions:
@@ -4377,7 +4437,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       rsin:
         description: ''
@@ -4400,7 +4460,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       nationaliteitcode:
         description: ''
@@ -4415,19 +4475,19 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
     required: []
   Tabel33-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       gemeentecode:
         description: ''
@@ -4447,14 +4507,14 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
     required: []
   Tabel34-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       landcode:
         description: ''
@@ -4469,24 +4529,24 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
       fictieveDatumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
     required: []
   Tabel36-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       voorvoegsel:
         description: ''
@@ -4498,7 +4558,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       reden:
         description: redenOpnemenBeeindigenNationaliteit
@@ -4516,19 +4576,19 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
     required: []
   Tabel38-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       adellijkeTitelPredikaat:
         description: ''
@@ -4548,7 +4608,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       akteaanduiding:
         description: ''
@@ -4564,7 +4624,7 @@ definitions:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       reden:
         description: ''
@@ -4578,19 +4638,19 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
     required: []
   Tabel48-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       nederlandsReisdocument:
         description: ''
@@ -4604,19 +4664,19 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
     required: []
   Tabel49-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
+        example: 9b9eea1a-ef04-427d-b8bd-7f5c24801874
         format: uuid
       autoriteitVanAfgifte:
         description: ''
@@ -4630,12 +4690,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-01-13'
+        example: '2020-03-06'
     required: []
   Tabel55-read:
     properties:
@@ -4661,13 +4721,15 @@ definitions:
       datumIngang:
         description: 'A "Y-m-d" formatted value'
         type: string
-        format: date
-        example: '2020-01-13'
+        eaxample: '#/components/schemas/DateTime-read'
+        format: date-time
+        example: '2020-03-06T12:22:55+00:00'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
-        format: date
-        example: '2020-01-13'
+        eaxample: '#/components/schemas/DateTime-read'
+        format: date-time
+        example: '2020-03-06T12:22:55+00:00'
     required: []
 tags:
   -
