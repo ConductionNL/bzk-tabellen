@@ -599,7 +599,7 @@ paths:
         200:
           description: 'Tabel32 resource response'
           content:
-            application/health+json:
+            application/ld+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity-read'
             application/json+health:
@@ -880,7 +880,7 @@ paths:
         200:
           description: 'Tabel33 resource response'
           content:
-            application/health+json:
+            application/ld+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity-read'
             application/json+health:
@@ -1161,7 +1161,7 @@ paths:
         200:
           description: 'Tabel34 resource response'
           content:
-            application/health+json:
+            application/ld+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity-read'
             application/json+health:
@@ -1426,7 +1426,7 @@ paths:
         200:
           description: 'Tabel36 resource response'
           content:
-            application/health+json:
+            application/ld+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity-read'
             application/json+health:
