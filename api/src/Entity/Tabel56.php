@@ -10,6 +10,7 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * Verblijfstitel.
@@ -47,7 +48,7 @@ class Tabel56
 	 * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
 	 */
 	private $id;
-	
+
     /**
      * @var string
      *
