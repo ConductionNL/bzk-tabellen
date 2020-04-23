@@ -8,25 +8,26 @@ settings:
   name: ltc
   title: Landelijke Tabbelen Component
   version: V.0.1
+  id: &#039;&#039;
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
+  type: component
   repro: https://github.com/ConductionNL/landelijketabellencatalogus
   demo: ltc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/ltc-php
-  subdomain: ltc  
-  domains:
-    - mijnapp.zaakonline.nl
-  domainsJson: ["mijnapp.zaakonline.nl"]
+  domain: conduction.nl
+  subdomain: ltc
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
   state: Noord-Holland
   locality: Amsterdam
-  unit: Common-Ground  
+  unit: Common-Ground
   env: dev
   debug: 1
+  cache: 1
   replicaCount: 1
   corsAllowOrigin: ['*']
-  trustedHosts: '127.0.0.1$|^(.+\.)?conduction\.nl$|^(.+\.)?huwelijksplanner\.online$|^(.+\.)?larping\.eu$|^(.+\.)?common-ground\.dev$|^(.+\.)?trouwplanner\.online$|^(.+\.)?zaakonline\.nl$|localhost'
+  trustedHosts: '^localhost$|^127.0.0.1$|^(.+\.)?conduction\.nl$|^(.+\.)?zaakonline\.nl$'
   pullPolicy: Always
   # You will need these proxies on kubernetes
   trustedProxies:

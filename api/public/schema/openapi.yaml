@@ -6122,6 +6122,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         request:
           readOnly: true
           description: 'The id of the request within that application'
@@ -6252,6 +6253,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         request:
           readOnly: true
           description: 'The id of the request within that application'
@@ -6383,6 +6385,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         action:
           readOnly: true
           type: string
@@ -6443,6 +6446,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         action:
           readOnly: true
           type: string
@@ -6504,6 +6508,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         rsin:
           readOnly: true
           type: string
@@ -6532,6 +6537,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         rsin:
           readOnly: true
           type: string
@@ -6551,6 +6557,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         nationaliteitcode:
           readOnly: true
           type: string
@@ -6590,6 +6597,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         nationaliteitcode:
           readOnly: true
           type: string
@@ -6620,6 +6628,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         gemeentecode:
           readOnly: true
           type: string
@@ -6655,6 +6664,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         gemeentecode:
           readOnly: true
           type: string
@@ -6681,6 +6691,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         landcode:
           readOnly: true
           type: string
@@ -6727,6 +6738,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         landcode:
           readOnly: true
           type: string
@@ -6764,6 +6776,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         voorvoegsel:
           readOnly: true
           type: string
@@ -6786,6 +6799,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         voorvoegsel:
           readOnly: true
           type: string
@@ -6799,6 +6813,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         reden:
           readOnly: true
           description: redenOpnemenBeeindigenNationaliteit
@@ -6842,6 +6857,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         reden:
           readOnly: true
           description: redenOpnemenBeeindigenNationaliteit
@@ -6876,6 +6892,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         adellijkeTitelPredikaat:
           readOnly: true
           type: string
@@ -6904,6 +6921,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         adellijkeTitelPredikaat:
           readOnly: true
           type: string
@@ -6923,6 +6941,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         akteaanduiding:
           readOnly: true
           type: string
@@ -6948,6 +6967,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         akteaanduiding:
           readOnly: true
           type: string
@@ -6964,6 +6984,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         reden:
           readOnly: true
           type: string
@@ -7003,6 +7024,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         reden:
           readOnly: true
           type: string
@@ -7033,6 +7055,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         nederlandsReisdocument:
           readOnly: true
           type: string
@@ -7072,6 +7095,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         nederlandsReisdocument:
           readOnly: true
           type: string
@@ -7102,6 +7126,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         autoriteitVanAfgifte:
           readOnly: true
           type: string
@@ -7141,6 +7166,7 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         autoriteitVanAfgifte:
           readOnly: true
           type: string
@@ -7165,6 +7191,13 @@ components:
       type: object
       description: 'PK Afnemers.'
       properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
         afnemersaanduiding:
           readOnly: true
           type: string
@@ -7184,6 +7217,13 @@ components:
         '@type':
           readOnly: true
           type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
         afnemersaanduiding:
           readOnly: true
           type: string
@@ -7194,6 +7234,13 @@ components:
       type: object
       description: Verblijfstitel.
       properties:
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
         verblijfstitel:
           readOnly: true
           type: string
@@ -7227,6 +7274,13 @@ components:
         '@type':
           readOnly: true
           type: string
+        id:
+          readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
         verblijfstitel:
           readOnly: true
           type: string
@@ -7352,12 +7406,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-03-11 10:00:52'
+        example: '2020-04-23 07:01:24'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-03-11 10:00:52'
+        example: '2020-04-23 07:01:24'
     required: []
   AuditTrail-write:
     properties:
@@ -7405,12 +7459,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-03-11 10:00:52'
+        example: '2020-04-23 07:01:24'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-03-11 10:00:52'
+        example: '2020-04-23 07:01:24'
     required: []
   ChangeLog-write:
     properties:
@@ -7463,12 +7517,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
     required: []
   Tabel33-read:
     properties:
@@ -7495,7 +7549,7 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
     required: []
   Tabel34-read:
     properties:
@@ -7517,17 +7571,17 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
       fictieveDatumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
     required: []
   Tabel36-read:
     properties:
@@ -7564,12 +7618,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
     required: []
   Tabel38-read:
     properties:
@@ -7626,12 +7680,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
     required: []
   Tabel48-read:
     properties:
@@ -7652,12 +7706,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
     required: []
   Tabel49-read:
     properties:
@@ -7678,15 +7732,20 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-04-23'
     required: []
   Tabel55-read:
     properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
       afnemersaanduiding:
         description: ''
         type: string
@@ -7698,6 +7757,11 @@ definitions:
     required: []
   Tabel56-read:
     properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
       verblijfstitel:
         description: ''
         type: string
@@ -7710,12 +7774,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-03-11 10:00:52'
+        example: '2020-04-23 07:01:24'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-03-11 10:00:52'
+        example: '2020-04-23 07:01:24'
     required: []
 tags:
   -
@@ -7826,8 +7890,8 @@ securityDefinitions:
 host: irc.zaakonline.nl
 servers:
   -
-    description: 'Demo Omgeving'
-    url: 'http://tc.demo.common-ground.dev/'
+    name: conduction.nl
+    url: ltc.dev.conduction.nl
 externalDocs:
   -
     description: 'OAS Documentatie'
