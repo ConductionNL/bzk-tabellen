@@ -7406,12 +7406,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-22 13:34:27'
+        example: '2020-04-23 07:01:24'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-22 13:34:27'
+        example: '2020-04-23 07:01:24'
     required: []
   AuditTrail-write:
     properties:
@@ -7459,12 +7459,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-22 13:34:27'
+        example: '2020-04-23 07:01:24'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-22 13:34:27'
+        example: '2020-04-23 07:01:24'
     required: []
   ChangeLog-write:
     properties:
@@ -7517,12 +7517,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
     required: []
   Tabel33-read:
     properties:
@@ -7549,7 +7549,7 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
     required: []
   Tabel34-read:
     properties:
@@ -7571,17 +7571,17 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
       fictieveDatumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
     required: []
   Tabel36-read:
     properties:
@@ -7618,12 +7618,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
     required: []
   Tabel38-read:
     properties:
@@ -7680,12 +7680,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
     required: []
   Tabel48-read:
     properties:
@@ -7706,12 +7706,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
     required: []
   Tabel49-read:
     properties:
@@ -7732,12 +7732,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-04-22'
+        example: '2020-04-23'
     required: []
   Tabel55-read:
     properties:
@@ -7774,12 +7774,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-04-22 13:34:27'
+        example: '2020-04-23 07:01:24'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-04-22 13:34:27'
+        example: '2020-04-23 07:01:24'
     required: []
 tags:
   -
