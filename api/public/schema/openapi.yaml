@@ -7406,12 +7406,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-23 07:01:24'
+        example: '2020-04-23 11:42:44'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-23 07:01:24'
+        example: '2020-04-23 11:42:44'
     required: []
   AuditTrail-write:
     properties:
@@ -7459,12 +7459,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-23 07:01:24'
+        example: '2020-04-23 11:42:44'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-23 07:01:24'
+        example: '2020-04-23 11:42:44'
     required: []
   ChangeLog-write:
     properties:
@@ -7774,12 +7774,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-04-23 07:01:24'
+        example: '2020-04-23 11:42:44'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-04-23 07:01:24'
+        example: '2020-04-23 11:42:44'
     required: []
 tags:
   -
