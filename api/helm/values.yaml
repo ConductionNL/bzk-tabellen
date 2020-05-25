@@ -10,13 +10,12 @@ settings:
   version: V.0.1
   id: 
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
+  type: component
   repro: https://github.com/ConductionNL/landelijketabellencatalogus
   demo: ltc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/ltc-php
-  subdomain: ltc  
-  domains:
-    - mijnapp.zaakonline.nl
-  domainsJson: ["mijnapp.zaakonline.nl"]
+  domain: conduction.nl
+  subdomain: ltc
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
