@@ -6122,114 +6122,114 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
+        application:
+          writeOnly: true
+          description: 'The application that made the request'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         request:
-          readOnly: true
           description: 'The id of the request within that application'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         user:
-          readOnly: true
           description: 'The user on behalf of wich the request was made'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         subject:
-          readOnly: true
           description: '???'
           type: string
+          nullable: true
         process:
-          readOnly: true
           description: 'The procces on behalf of wich the request was made'
           type: string
+          nullable: true
         dataElements:
-          readOnly: true
           description: 'The moment this request was created'
           type: array
           items:
             type: string
+          nullable: true
         dataSubjects:
-          readOnly: true
           description: 'The moment this request was created'
           type: array
           items:
             type: string
+          nullable: true
         resource:
-          readOnly: true
           description: 'The resource that was requested'
           type: string
+          nullable: true
         resourceType:
-          readOnly: true
           description: 'The type of the resource that was requested'
           type: string
+          nullable: true
         route:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         endpoint:
-          readOnly: true
           description: 'The endpoint that the request was made to'
           type: string
         method:
-          readOnly: true
           description: 'The method that was used'
           type: string
         accept:
-          readOnly: true
           description: 'The contentType that was reqousted'
           type: string
         contentType:
-          readOnly: true
           description: 'The contentType that was suplieds'
           type: string
         content:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
+          nullable: true
         ip:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         session:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         headers:
-          readOnly: true
           description: 'The headers supplied by client'
           type: array
           items:
             type: string
         statusCode:
-          readOnly: true
           description: 'The status code returned to client'
           type: integer
+          nullable: true
         notFound:
-          readOnly: true
           description: 'Whether or not the reqousted endpoint was found'
           type: boolean
+          nullable: true
         forbidden:
-          readOnly: true
           description: 'Whether or not the client was allowed to the reqousted endpoint'
           type: boolean
+          nullable: true
         ok:
-          readOnly: true
           description: 'Whether or not there where any problems'
           type: boolean
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
     AuditTrail-write:
       type: object
       description: 'An resource representing a log line.'
@@ -6252,114 +6252,114 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
+        application:
+          writeOnly: true
+          description: 'The application that made the request'
+          externalDocs:
+            url: 'http://schema.org/url'
+          type: string
+          nullable: true
         request:
-          readOnly: true
           description: 'The id of the request within that application'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         user:
-          readOnly: true
           description: 'The user on behalf of wich the request was made'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         subject:
-          readOnly: true
           description: '???'
           type: string
+          nullable: true
         process:
-          readOnly: true
           description: 'The procces on behalf of wich the request was made'
           type: string
+          nullable: true
         dataElements:
-          readOnly: true
           description: 'The moment this request was created'
           type: array
           items:
             type: string
+          nullable: true
         dataSubjects:
-          readOnly: true
           description: 'The moment this request was created'
           type: array
           items:
             type: string
+          nullable: true
         resource:
-          readOnly: true
           description: 'The resource that was requested'
           type: string
+          nullable: true
         resourceType:
-          readOnly: true
           description: 'The type of the resource that was requested'
           type: string
+          nullable: true
         route:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         endpoint:
-          readOnly: true
           description: 'The endpoint that the request was made to'
           type: string
         method:
-          readOnly: true
           description: 'The method that was used'
           type: string
         accept:
-          readOnly: true
           description: 'The contentType that was reqousted'
           type: string
         contentType:
-          readOnly: true
           description: 'The contentType that was suplieds'
           type: string
         content:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
+          nullable: true
         ip:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         session:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
         headers:
-          readOnly: true
           description: 'The headers supplied by client'
           type: array
           items:
             type: string
         statusCode:
-          readOnly: true
           description: 'The status code returned to client'
           type: integer
+          nullable: true
         notFound:
-          readOnly: true
           description: 'Whether or not the reqousted endpoint was found'
           type: boolean
+          nullable: true
         forbidden:
-          readOnly: true
           description: 'Whether or not the client was allowed to the reqousted endpoint'
           type: boolean
+          nullable: true
         ok:
-          readOnly: true
           description: 'Whether or not there where any problems'
           type: boolean
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
     'AuditTrail:jsonld-write':
       type: object
       description: 'An resource representing a log line.'
@@ -6383,44 +6383,42 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         action:
-          readOnly: true
           type: string
         objectId:
-          readOnly: true
           type: string
+          nullable: true
         objectClass:
-          readOnly: true
           type: string
         version:
-          readOnly: true
           type: integer
         data:
-          readOnly: true
           type: array
           items:
             type: string
+          nullable: true
         username:
-          readOnly: true
           type: string
+          nullable: true
         session:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
     ChangeLog-write:
       type: object
       description: 'An resource representing a log line.'
@@ -6443,44 +6441,42 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         action:
-          readOnly: true
           type: string
         objectId:
-          readOnly: true
           type: string
+          nullable: true
         objectClass:
-          readOnly: true
           type: string
         version:
-          readOnly: true
           type: integer
         data:
-          readOnly: true
           type: array
           items:
             type: string
+          nullable: true
         username:
-          readOnly: true
           type: string
+          nullable: true
         session:
-          readOnly: true
           description: 'The moment this request was created'
           type: string
+          nullable: true
         dateCreated:
-          readOnly: true
           description: 'The moment this request was created'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this request last Modified'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
     'ChangeLog:jsonld-write':
       type: object
       description: 'An resource representing a log line.'
@@ -6504,14 +6500,12 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         rsin:
-          readOnly: true
           type: string
         kvk:
-          readOnly: true
           type: string
         gemeenteCode:
-          readOnly: true
           type: string
     'RSIN:jsonld-read':
       type: object
@@ -6532,14 +6526,12 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         rsin:
-          readOnly: true
           type: string
         kvk:
-          readOnly: true
           type: string
         gemeenteCode:
-          readOnly: true
           type: string
     Tabel32-read:
       type: object
@@ -6551,26 +6543,28 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         nationaliteitcode:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - nationaliteitcode
+        - omschrijving
     'Tabel32:jsonld-read':
       type: object
       description: Nationaliteitcodes.
@@ -6590,26 +6584,28 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         nationaliteitcode:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - nationaliteitcode
+        - omschrijving
     Tabel33-read:
       type: object
       description: Gemeentecodes.
@@ -6620,22 +6616,24 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         gemeentecode:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         nieuweCode:
-          readOnly: true
           type: string
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - gemeentecode
+        - omschrijving
     'Tabel33:jsonld-read':
       type: object
       description: Gemeentecodes.
@@ -6655,22 +6653,24 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         gemeentecode:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         nieuweCode:
-          readOnly: true
           type: string
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - gemeentecode
+        - omschrijving
     Tabel34-read:
       type: object
       description: 'Landen Tabels.'
@@ -6681,33 +6681,35 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         landcode:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         fictieveDatumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - landcode
+        - omschrijving
     'Tabel34:jsonld-read':
       type: object
       description: 'Landen Tabels.'
@@ -6727,33 +6729,35 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         landcode:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         fictieveDatumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - landcode
+        - omschrijving
     Tabel36-read:
       type: object
       description: Voorvoegsels.
@@ -6764,9 +6768,11 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         voorvoegsel:
-          readOnly: true
           type: string
+      required:
+        - voorvoegsel
     'Tabel36:jsonld-read':
       type: object
       description: Voorvoegsels.
@@ -6786,9 +6792,11 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         voorvoegsel:
-          readOnly: true
           type: string
+      required:
+        - voorvoegsel
     Tabel37-read:
       type: object
       description: redenOpnemenBeeindigenNationaliteit.
@@ -6799,30 +6807,32 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         reden:
-          readOnly: true
           description: redenOpnemenBeeindigenNationaliteit
           type: string
         omschrijving:
-          readOnly: true
           type: string
         soort:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - reden
+        - omschrijving
+        - soort
     'Tabel37:jsonld-read':
       type: object
       description: redenOpnemenBeeindigenNationaliteit.
@@ -6842,30 +6852,32 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         reden:
-          readOnly: true
           description: redenOpnemenBeeindigenNationaliteit
           type: string
         omschrijving:
-          readOnly: true
           type: string
         soort:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - reden
+        - omschrijving
+        - soort
     Tabel38-read:
       type: object
       description: 'Adellijke titel/predikaat.'
@@ -6876,15 +6888,17 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         adellijkeTitelPredikaat:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         soort:
-          readOnly: true
           type: string
+      required:
+        - adellijkeTitelPredikaat
+        - omschrijving
+        - soort
     'Tabel38:jsonld-read':
       type: object
       description: 'Adellijke titel/predikaat.'
@@ -6904,15 +6918,17 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         adellijkeTitelPredikaat:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         soort:
-          readOnly: true
           type: string
+      required:
+        - adellijkeTitelPredikaat
+        - omschrijving
+        - soort
     Tabel39-read:
       type: object
       description: Akteaanduiding.
@@ -6923,12 +6939,14 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         akteaanduiding:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
+      required:
+        - akteaanduiding
+        - omschrijving
     'Tabel39:jsonld-read':
       type: object
       description: Akteaanduiding.
@@ -6948,12 +6966,14 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         akteaanduiding:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
+      required:
+        - akteaanduiding
+        - omschrijving
     Tabel41-read:
       type: object
       description: 'Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap.'
@@ -6964,26 +6984,28 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         reden:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - reden
+        - omschrijving
     'Tabel41:jsonld-read':
       type: object
       description: 'Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap.'
@@ -7003,26 +7025,28 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         reden:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - reden
+        - omschrijving
     Tabel48-read:
       type: object
       description: 'Nederlands reisdocument.'
@@ -7033,26 +7057,28 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         nederlandsReisdocument:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - nederlandsReisdocument
+        - omschrijving
     'Tabel48:jsonld-read':
       type: object
       description: 'Nederlands reisdocument.'
@@ -7072,26 +7098,28 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         nederlandsReisdocument:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - nederlandsReisdocument
+        - omschrijving
     Tabel49-read:
       type: object
       description: 'Autoriteit van afgifte Nederlands reisdocument.'
@@ -7102,26 +7130,28 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         autoriteitVanAfgifte:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - autoriteitVanAfgifte
+        - omschrijving
     'Tabel49:jsonld-read':
       type: object
       description: 'Autoriteit van afgifte Nederlands reisdocument.'
@@ -7141,36 +7171,46 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+          format: uuid
         autoriteitVanAfgifte:
-          readOnly: true
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/Date'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - autoriteitVanAfgifte
+        - omschrijving
     Tabel55-read:
       type: object
       description: 'PK Afnemers.'
       properties:
-        afnemersaanduiding:
+        id:
           readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        afnemersaanduiding:
           type: string
         omschrijving:
-          readOnly: true
           type: string
+      required:
+        - afnemersaanduiding
+        - omschrijving
     'Tabel55:jsonld-read':
       type: object
       description: 'PK Afnemers.'
@@ -7184,36 +7224,52 @@ components:
         '@type':
           readOnly: true
           type: string
-        afnemersaanduiding:
+        id:
           readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        afnemersaanduiding:
           type: string
         omschrijving:
-          readOnly: true
           type: string
+      required:
+        - afnemersaanduiding
+        - omschrijving
     Tabel56-read:
       type: object
       description: Verblijfstitel.
       properties:
-        verblijfstitel:
+        id:
           readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        verblijfstitel:
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - verblijfstitel
+        - omschrijving
     'Tabel56:jsonld-read':
       type: object
       description: Verblijfstitel.
@@ -7227,199 +7283,35 @@ components:
         '@type':
           readOnly: true
           type: string
-        verblijfstitel:
+        id:
           readOnly: true
+          description: 'The UUID identifier of this object'
+          externalDocs:
+            url: 'http://schema.org/identifier'
+          type: string
+          format: uuid
+        verblijfstitel:
           type: string
         omschrijving:
-          readOnly: true
           type: string
         datumIngang:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
         datumEinde:
-          readOnly: true
           description: 'A "Y-m-d" formatted value'
           externalDocs:
             url: 'http://schema.org/DateTime'
           type: string
           format: date-time
+          nullable: true
+      required:
+        - verblijfstitel
+        - omschrijving
 definitions:
-  AuditTrail-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line looks suspicius'
-        maxLength: 2555
-      application:
-        description: 'The application that made the request'
-        type: string
-        format: url
-        maxLength: 255
-      request:
-        description: 'The id of the request within that application'
-        type: string
-        format: url
-        maxLength: 255
-      user:
-        description: 'The user on behalf of wich the request was made'
-        type: string
-        format: url
-        maxLength: 255
-      subject:
-        description: '???'
-        type: \sting
-        maxLength: 255
-      process:
-        description: 'The procces on behalf of wich the request was made'
-        type: \sting
-        maxLength: 255
-      dataElements:
-        description: 'The moment this request was created'
-        type: array
-      dataSubjects:
-        description: 'The moment this request was created'
-        type: array
-      resource:
-        description: 'The resource that was requested'
-        type: \sting
-        maxLength: 255
-      resourceType:
-        description: 'The type of the resource that was requested'
-        type: \sting
-        maxLength: 255
-      route:
-        description: 'The moment this request was created'
-        type: \sting
-        maxLength: 255
-      endpoint:
-        description: 'The endpoint that the request was made to'
-        type: \sting
-        maxLength: 255
-      method:
-        description: 'The method that was used'
-        type: \sting
-        maxLength: 255
-      accept:
-        description: 'The contentType that was reqousted'
-        type: \sting
-        maxLength: 255
-      contentType:
-        description: 'The contentType that was suplieds'
-        type: \sting
-        maxLength: 255
-      content:
-        description: 'The moment this request was created'
-        type: \sting
-        maxLength: 2555
-      ip:
-        description: 'The moment this request was created'
-        type: \sting
-        maxLength: 255
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      headers:
-        description: 'The headers supplied by client'
-        type: array
-      statusCode:
-        description: 'The status code returned to client'
-        type: int
-        example: '200'
-      notFound:
-        description: 'Whether or not the reqousted endpoint was found'
-        type: bool
-        example: 'false'
-      forbidden:
-        description: 'Whether or not the client was allowed to the reqousted endpoint'
-        type: bool
-        example: 'false'
-      ok:
-        description: 'Whether or not there where any problems'
-        type: bool
-        example: 'true'
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2020-03-11 10:00:52'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-03-11 10:00:52'
-    required: []
-  AuditTrail-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line looks suspicius'
-        maxLength: 2555
-    required: []
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: \sting
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2020-03-11 10:00:52'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-03-11 10:00:52'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
   RSIN-read:
     properties:
       id:
@@ -7463,12 +7355,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
     required: []
   Tabel33-read:
     properties:
@@ -7495,7 +7387,7 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
     required: []
   Tabel34-read:
     properties:
@@ -7517,17 +7409,17 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
       fictieveDatumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
     required: []
   Tabel36-read:
     properties:
@@ -7564,12 +7456,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
     required: []
   Tabel38-read:
     properties:
@@ -7626,12 +7518,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
     required: []
   Tabel48-read:
     properties:
@@ -7652,12 +7544,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
     required: []
   Tabel49-read:
     properties:
@@ -7678,15 +7570,20 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-03-11'
+        example: '2020-05-25'
     required: []
   Tabel55-read:
     properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
       afnemersaanduiding:
         description: ''
         type: string
@@ -7698,6 +7595,11 @@ definitions:
     required: []
   Tabel56-read:
     properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
       verblijfstitel:
         description: ''
         type: string
@@ -7710,26 +7612,186 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-03-11 10:00:52'
+        example: '2020-05-25 15:10:12'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-03-11 10:00:52'
+        example: '2020-05-25 15:10:12'
+    required: []
+  AuditTrail-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line looks suspicius'
+        maxLength: 2555
+      application:
+        description: 'The application that made the request'
+        type: string
+        format: url
+        maxLength: 255
+      request:
+        description: 'The id of the request within that application'
+        type: string
+        format: url
+        maxLength: 255
+      user:
+        description: 'The user on behalf of wich the request was made'
+        type: string
+        format: url
+        maxLength: 255
+      subject:
+        description: '???'
+        type: string
+        maxLength: 255
+      process:
+        description: 'The procces on behalf of wich the request was made'
+        type: string
+        maxLength: 255
+      dataElements:
+        description: 'The moment this request was created'
+        type: array
+      dataSubjects:
+        description: 'The moment this request was created'
+        type: array
+      resource:
+        description: 'The resource that was requested'
+        type: string
+        maxLength: 255
+      resourceType:
+        description: 'The type of the resource that was requested'
+        type: string
+        maxLength: 255
+      route:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      endpoint:
+        description: 'The endpoint that the request was made to'
+        type: string
+        maxLength: 255
+      method:
+        description: 'The method that was used'
+        type: string
+        maxLength: 255
+      accept:
+        description: 'The contentType that was reqousted'
+        type: string
+        maxLength: 255
+      contentType:
+        description: 'The contentType that was suplieds'
+        type: string
+        maxLength: 255
+      content:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 2555
+      ip:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      headers:
+        description: 'The headers supplied by client'
+        type: array
+      statusCode:
+        description: 'The status code returned to client'
+        type: int
+        example: '200'
+      notFound:
+        description: 'Whether or not the reqousted endpoint was found'
+        type: bool
+        example: 'false'
+      forbidden:
+        description: 'Whether or not the client was allowed to the reqousted endpoint'
+        type: bool
+        example: 'false'
+      ok:
+        description: 'Whether or not there where any problems'
+        type: bool
+        example: 'true'
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-05-25 15:10:12'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-05-25 15:10:12'
+    required: []
+  AuditTrail-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line looks suspicius'
+        maxLength: 2555
+    required: []
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-05-25 15:10:12'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-05-25 15:10:12'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
     required: []
 tags:
-  -
-    name: AuditTrail
-    description: |
-      An resource representing a log line.
-      
-      This entity represents a product that can be ordered via the OrderRegistratieComponent.
-  -
-    name: ChangeLog
-    description: |
-      An resource representing a log line.
-      
-      This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
     name: RSIN
     description: |
@@ -7808,30 +7870,42 @@ tags:
       Verblijfstitel.
       
       
+  -
+    name: AuditTrail
+    description: |
+      An resource representing a log line.
+      
+      This entity represents a product that can be ordered via the OrderRegistratieComponent.
+  -
+    name: ChangeLog
+    description: |
+      An resource representing a log line.
+      
+      This entity represents a product that can be ordered via the OrderRegistratieComponent.
 securityDefinitions:
   JWT-Oauth:
     type: oauth2
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the Tabel56 resource'
+      read: 'read right to the ChangeLog resource'
       write: 'write right to the ChangeLog resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the Tabel56 resource'
+      read: 'read right to the ChangeLog resource'
       write: 'write right to the ChangeLog resource'
 host: irc.zaakonline.nl
 servers:
   -
-    description: 'Demo Omgeving'
-    url: 'http://tc.demo.common-ground.dev/'
+    name: conduction.nl
+    url: ltc.dev.conduction.nl
 externalDocs:
   -
     description: 'OAS Documentatie'
-    url: 'http://tc.demo.common-ground.dev/'
+    url: 'http://proto.demo.common-ground.dev'
 x-commonground:
   type: service
   developers:
@@ -7840,9 +7914,13 @@ x-commonground:
       url: 'https://github.com/ConductionNL'
       email: info@conduction.nl
     -
-      name: 'Gemeente ''s-Hertogenbosch'
+      name: 'Gemeente "s-Hertogenbosch'
       url: 'https://github.com/gemeenteshertogenbosch'
       email: info@s-hertogenbosch.nl/
+    -
+      name: 'Gemeente Utrecht'
+      url: 'https://github.com/GemeenteUtrecht'
+      email: info@utrecht.nl
   builds:
     -
       name: travis
