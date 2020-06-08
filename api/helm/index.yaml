@@ -3,14 +3,14 @@ entries:
   ltc:
   - apiVersion: v1
     appVersion: V.0.1
-    created: "2020-06-08T11:20:22.203307Z"
+    created: "2020-06-08T18:42:54.767208767Z"
     description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql)
       interface beschikbaar.&#039;'
-    digest: fc304cb0f6173f0c53ee24494e292a65767242782fe94e5bee4e3d6f046e9ac2
+    digest: 29045c2b4ab680d18e7d62eb08458df1e9937cd724d302aed0cc567cdea58761
     home: pc.zaakonline.nl
     icon: pc.zaakonline.nl
     name: ltc
     urls:
     - ltc-0.1.0.tgz
     version: 0.1.0
-generated: "2020-06-08T11:20:22.1981862Z"
+generated: "2020-06-08T18:42:54.644786041Z"
