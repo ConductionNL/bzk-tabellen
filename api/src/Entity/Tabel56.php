@@ -26,7 +26,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     itemOperations={
  *     		"get"={
  *     			"method"="GET",
- *     			"path"="/tabel56/{verblijfstitel}"
+ *     			"path"="/tabel56/{id}"
  *     		}
  *     }
  * )
@@ -94,7 +94,7 @@ class Tabel56
 
     public function getId(): ?string
     {
-        return $this->verblijfstitel;
+        return $this->id;
     }
 
     public function getVerblijfstitel(): ?string

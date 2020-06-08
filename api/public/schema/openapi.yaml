@@ -5979,7 +5979,7 @@ paths:
           in: query
       produces:
         - application/health+json
-  '/tabel56/{verblijfstitel}':
+  '/tabel56/{id}':
     get:
       tags:
         - Tabel56
@@ -7612,12 +7612,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-06-08 11:23:13'
+        example: '2020-06-08 18:44:40'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-06-08 11:23:13'
+        example: '2020-06-08 18:44:40'
     required: []
   AuditTrail-read:
     properties:
@@ -7723,12 +7723,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-08 11:23:13'
+        example: '2020-06-08 18:44:40'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-08 11:23:13'
+        example: '2020-06-08 18:44:40'
     required: []
   AuditTrail-write:
     properties:
@@ -7776,12 +7776,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-06-08 11:23:13'
+        example: '2020-06-08 18:44:40'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-06-08 11:23:13'
+        example: '2020-06-08 18:44:40'
     required: []
   ChangeLog-write:
     properties:
