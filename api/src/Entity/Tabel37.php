@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Ramsey\Uuid\UuidInterface;
 
 /**
  * redenOpnemenBeeindigenNationaliteit.
