@@ -7,7 +7,8 @@ settings:
   projectName: ltc
   name: ltc
   title: Landelijke Tabbelen Component
-  version: V.0.1
+  version: V1.0
+  majorVersion: v1
   id: 
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
   type: component
@@ -16,7 +17,7 @@ settings:
   container: https://hub.docker.com/repository/docker/conduction/ltc-php
   domain: conduction.nl
   subdomain: ltc
-  subpath: pc
+  subpath: ltc
   subpathRouting: true
   organisationName: Conduction
   email: info@conduction.nl
