@@ -35,14 +35,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"rsin\", jsonData._embedded.item[0].id);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -50,9 +42,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -97,7 +86,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/rsin?",
+							"raw": "{{baseUrl}}/rsin",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -321,322 +310,6 @@
 							"body": "[\n {\n  \"id\": \"<string>\",\n  \"rsin\": \"<string>\",\n  \"kvk\": \"<string>\",\n  \"gemeenteCode\": \"<string>\"\n },\n {\n  \"id\": \"<string>\",\n  \"rsin\": \"<string>\",\n  \"kvk\": \"<string>\",\n  \"gemeenteCode\": \"<string>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a RSIN resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "c2a2223c-e01b-4327-b6fc-530c40e8b30e",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/rsin/{{rsin}}?",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"rsin",
-								"{{rsin}}"
-							],
-							"query": [
-								{
-									"key": "extend[]",
-									"value": "<array>",
-									"description": "An array of nested objects to include in the return object",
-									"disabled": true
-								},
-								{
-									"key": "fields[]",
-									"value": "<array>",
-									"description": "An array of fields to return in output, wil return all fields is not supplied",
-									"disabled": true
-								},
-								{
-									"key": "validOn",
-									"value": "<dateTime>",
-									"description": "Returns object as valid on a given date time",
-									"disabled": true
-								},
-								{
-									"key": "validFrom",
-									"value": "<dateTime>",
-									"description": "Returns objects valid from a given date time",
-									"disabled": true
-								},
-								{
-									"key": "validUntil",
-									"value": "<dateTime>",
-									"description": "Returns objects valid until a given date time",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/rsin/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"rsin",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "RSIN resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/rsin/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"rsin",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<string>\",\n \"rsin\": \"<string>\",\n \"kvk\": \"<string>\",\n \"gemeenteCode\": \"<string>\"\n}"
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -670,14 +343,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel32\", jsonData._embedded.item[0].id);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -686,7 +351,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -732,7 +409,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/tabel32?",
+							"raw": "{{baseUrl}}/tabel32",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -911,322 +588,6 @@
 							"body": "[\n {\n  \"id\": \"<string>\",\n  \"nationaliteitcode\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n },\n {\n  \"id\": \"<string>\",\n  \"nationaliteitcode\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel32 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "fc361cb2-5147-4369-b618-55574a2fe161",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel32/{{tabel32}}?",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel32",
-								"{{tabel32}}"
-							],
-							"query": [
-								{
-									"key": "extend[]",
-									"value": "<array>",
-									"description": "An array of nested objects to include in the return object",
-									"disabled": true
-								},
-								{
-									"key": "fields[]",
-									"value": "<array>",
-									"description": "An array of fields to return in output, wil return all fields is not supplied",
-									"disabled": true
-								},
-								{
-									"key": "validOn",
-									"value": "<dateTime>",
-									"description": "Returns object as valid on a given date time",
-									"disabled": true
-								},
-								{
-									"key": "validFrom",
-									"value": "<dateTime>",
-									"description": "Returns objects valid from a given date time",
-									"disabled": true
-								},
-								{
-									"key": "validUntil",
-									"value": "<dateTime>",
-									"description": "Returns objects valid until a given date time",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Tabel32 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel32/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel32",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<string>\",\n \"nationaliteitcode\": \"<string>\",\n \"omschrijving\": \"<string>\",\n \"datumIngang\": \"<dateTime>\",\n \"datumEinde\": \"<dateTime>\"\n}"
-						},
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel32/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel32",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1260,14 +621,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel33\", jsonData._embedded.item[0].id);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1276,7 +629,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -1322,7 +687,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/tabel33?",
+							"raw": "{{baseUrl}}/tabel33",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1501,290 +866,6 @@
 							"body": "[\n {\n  \"id\": \"<string>\",\n  \"gemeentecode\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"nieuweCode\": \"<string>\",\n  \"datumEinde\": \"<dateTime>\"\n },\n {\n  \"id\": \"<string>\",\n  \"gemeentecode\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"nieuweCode\": \"<string>\",\n  \"datumEinde\": \"<dateTime>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel33 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4eda8426-dadc-436d-b89a-4cf8cd08f12d",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel33/{{tabel33}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel33",
-								"{{tabel33}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Tabel33 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel33/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel33",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<string>\",\n \"gemeentecode\": \"<string>\",\n \"omschrijving\": \"<string>\",\n \"nieuweCode\": \"<string>\",\n \"datumEinde\": \"<dateTime>\"\n}"
-						},
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel33/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel33",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1818,14 +899,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel34\", jsonData._embedded.item[0].id);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1834,7 +907,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -2001,290 +1086,6 @@
 							"body": "[\n {\n  \"id\": \"<string>\",\n  \"landcode\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\",\n  \"fictieveDatumEinde\": \"<dateTime>\"\n },\n {\n  \"id\": \"<string>\",\n  \"landcode\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\",\n  \"fictieveDatumEinde\": \"<dateTime>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel34 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "3311b2bf-c292-45d2-8872-97d967a39dde",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel34/{{tabel34}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel34",
-								"{{tabel34}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Tabel34 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel34/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel34",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<string>\",\n \"landcode\": \"<string>\",\n \"omschrijving\": \"<string>\",\n \"datumIngang\": \"<dateTime>\",\n \"datumEinde\": \"<dateTime>\",\n \"fictieveDatumEinde\": \"<dateTime>\"\n}"
-						},
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel34/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel34",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -2318,14 +1119,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel36\", jsonData._embedded.item[0].id);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2334,7 +1127,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -2489,290 +1294,6 @@
 							"body": "[\n {\n  \"id\": \"<string>\",\n  \"voorvoegsel\": \"<string>\"\n },\n {\n  \"id\": \"<string>\",\n  \"voorvoegsel\": \"<string>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel36 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "228994a4-7225-411c-ae26-0060ce9fc760",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel36/{{tabel36}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel36",
-								"{{tabel36}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel36/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel36",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Tabel36 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel36/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel36",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<string>\",\n \"voorvoegsel\": \"<string>\"\n}"
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -2806,14 +1327,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel37\", jsonData._embedded.item[0].id);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2822,7 +1335,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -3001,290 +1526,6 @@
 							"body": "[\n {\n  \"id\": \"<string>\",\n  \"reden\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"soort\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n },\n {\n  \"id\": \"<string>\",\n  \"reden\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"soort\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel37 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "04f541ad-0fc0-4f6c-ab33-5917c91fb982",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel37/{{tabel37}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel37",
-								"{{tabel37}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel37/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel37",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Tabel37 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel37/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel37",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<string>\",\n \"reden\": \"<string>\",\n \"omschrijving\": \"<string>\",\n \"soort\": \"<string>\",\n \"datumIngang\": \"<dateTime>\",\n \"datumEinde\": \"<dateTime>\"\n}"
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -3318,14 +1559,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel38\", jsonData._embedded.item[0].id);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -3334,7 +1567,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -3501,290 +1746,6 @@
 							"body": "[\n {\n  \"id\": \"<string>\",\n  \"adellijkeTitelPredikaat\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"soort\": \"<string>\"\n },\n {\n  \"id\": \"<string>\",\n  \"adellijkeTitelPredikaat\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"soort\": \"<string>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel38 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "aa1e355e-12c5-4c99-aa3a-72fbd220b151",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel38/{{tabel38}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel38",
-								"{{tabel38}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel38/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel38",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Tabel38 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel38/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel38",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<string>\",\n \"adellijkeTitelPredikaat\": \"<string>\",\n \"omschrijving\": \"<string>\",\n \"soort\": \"<string>\"\n}"
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -3818,14 +1779,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel39\", jsonData._embedded.item[0].id);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -3834,7 +1787,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -4001,290 +1966,6 @@
 							"body": "[\n {\n  \"id\": \"<string>\",\n  \"akteaanduiding\": \"<string>\",\n  \"omschrijving\": \"<string>\"\n },\n {\n  \"id\": \"<string>\",\n  \"akteaanduiding\": \"<string>\",\n  \"omschrijving\": \"<string>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel39 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "35732859-6fbc-4101-b8e0-be91f507d71c",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel39/{{tabel39}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel39",
-								"{{tabel39}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Tabel39 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel39/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel39",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<string>\",\n \"akteaanduiding\": \"<string>\",\n \"omschrijving\": \"<string>\"\n}"
-						},
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel39/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel39",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -4318,14 +1999,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel41\", jsonData._embedded.item[0].id);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -4334,7 +2007,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -4501,290 +2186,6 @@
 							"body": "[\n {\n  \"id\": \"<string>\",\n  \"reden\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n },\n {\n  \"id\": \"<string>\",\n  \"reden\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel41 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "31171cdf-74c0-483f-a701-dd7eeb8f9392",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel41/{{tabel41}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel41",
-								"{{tabel41}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel41/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel41",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Tabel41 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel41/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel41",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<string>\",\n \"reden\": \"<string>\",\n \"omschrijving\": \"<string>\",\n \"datumIngang\": \"<dateTime>\",\n \"datumEinde\": \"<dateTime>\"\n}"
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -4818,14 +2219,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel48\", jsonData._embedded.item[0].id);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -4834,7 +2227,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -5001,290 +2406,6 @@
 							"body": "[\n {\n  \"id\": \"<string>\",\n  \"nederlandsReisdocument\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n },\n {\n  \"id\": \"<string>\",\n  \"nederlandsReisdocument\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel48 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "444d2149-e352-4acc-bfb0-46bc85da799c",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel48/{{tabel48}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel48",
-								"{{tabel48}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Tabel48 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel48/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel48",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<string>\",\n \"nederlandsReisdocument\": \"<string>\",\n \"omschrijving\": \"<string>\",\n \"datumIngang\": \"<dateTime>\",\n \"datumEinde\": \"<dateTime>\"\n}"
-						},
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel48/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel48",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -5318,14 +2439,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel49\", jsonData._embedded.item[0].id);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -5334,7 +2447,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -5501,290 +2626,6 @@
 							"body": "[\n {\n  \"id\": \"<string>\",\n  \"autoriteitVanAfgifte\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n },\n {\n  \"id\": \"<string>\",\n  \"autoriteitVanAfgifte\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel49 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "b9f6e3ec-e1d0-4875-8380-9df765902a9b",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel49/{{tabel49}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel49",
-								"{{tabel49}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Tabel49 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel49/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel49",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<string>\",\n \"autoriteitVanAfgifte\": \"<string>\",\n \"omschrijving\": \"<string>\",\n \"datumIngang\": \"<dateTime>\",\n \"datumEinde\": \"<dateTime>\"\n}"
-						},
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel49/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel49",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -5818,14 +2659,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel55\", jsonData._embedded.item[0].afnemersaanduiding);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -5834,7 +2667,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -6001,290 +2846,6 @@
 							"body": "[\n {\n  \"afnemersaanduiding\": \"<string>\",\n  \"omschrijving\": \"<string>\"\n },\n {\n  \"afnemersaanduiding\": \"<string>\",\n  \"omschrijving\": \"<string>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel55 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "483d59f3-3e6a-45d3-ae35-9e5d82782a0d",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel55/{{tabel55}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel55",
-								"{{tabel55}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel55/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel55",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Tabel55 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel55/:id?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel55",
-										":id"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"afnemersaanduiding\": \"<string>\",\n \"omschrijving\": \"<string>\"\n}"
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -6318,14 +2879,6 @@
 									"     // assert that the response has a valid JSON body",
 									"     pm.response.to.be.withBody;",
 									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
-									"});",
-									"pm.test(\"Set ID\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData);",
-									"    //var payloadData = JSON.parse(jsonData.Payload); //parsed payload",
-									"",
-									"    //console.log(payloadData.Id);",
-									"    pm.environment.set(\"tabel56\", jsonData._embedded.item[0].verblijfstitel);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -6334,7 +2887,19 @@
 					],
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -6501,295 +3066,26 @@
 							"body": "[\n {\n  \"verblijfstitel\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n },\n {\n  \"verblijfstitel\": \"<string>\",\n  \"omschrijving\": \"<string>\",\n  \"datumIngang\": \"<dateTime>\",\n  \"datumEinde\": \"<dateTime>\"\n }\n]"
 						}
 					]
-				},
-				{
-					"name": "Retrieves a Tabel56 resource.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "28f6f74d-faaa-4d58-94b2-a1c8ad09ceba",
-								"exec": [
-									"// example using pm.response.to.have\r",
-									"pm.test(\"response is ok\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"// example using response assertions\r",
-									"pm.test(\"response should be okay to process\", function () {\r",
-									"    pm.response.to.not.be.error;\r",
-									"    pm.response.to.not.have.jsonBody(\"error\");\r",
-									"});\r",
-									"\r",
-									"// example using pm.response.to.be*\r",
-									"pm.test(\"response must be valid and have a body\", function () {\r",
-									"     // assert that the status code is 200\r",
-									"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-									"     // assert that the response has a valid JSON body\r",
-									"     pm.response.to.be.withBody;\r",
-									"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "",
-								"description": "The JWT of the entity performing the request"
-							},
-							{
-								"key": "API-Version",
-								"value": "",
-								"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-							},
-							{
-								"key": "X-NLX-Logrecord-ID",
-								"value": "",
-								"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-							},
-							{
-								"key": "X-NLX-Request-Process-Id",
-								"value": "",
-								"description": "A process id for purpose registration (doelbinding)"
-							},
-							{
-								"key": "X-NLX-Request-Data-Elements",
-								"value": "",
-								"description": "A list of requested data elements"
-							},
-							{
-								"key": "X-NLX-Request-Data-Subject",
-								"value": "",
-								"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-							},
-							{
-								"key": "X-NLX-Audit-Clarification",
-								"value": "",
-								"description": "A clarification as to why a request has been made  (doelbinding)"
-							},
-							{
-								"key": "Link",
-								"value": "",
-								"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/tabel56/{{tabel36}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"tabel56",
-								"{{tabel36}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Tabel56 resource response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/tabel56/:verblijfstitel?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel56",
-										":verblijfstitel"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "verblijfstitel"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/hal+json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"verblijfstitel\": \"<string>\",\n \"omschrijving\": \"<string>\",\n \"datumIngang\": \"<dateTime>\",\n \"datumEinde\": \"<dateTime>\"\n}"
-						},
-						{
-							"name": "Resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									},
-									{
-										"key": "Authorization",
-										"value": "",
-										"description": "The JWT of the entity performing the request"
-									},
-									{
-										"key": "API-Version",
-										"value": "",
-										"description": "The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)"
-									},
-									{
-										"key": "X-NLX-Logrecord-ID",
-										"value": "",
-										"description": "A  globally unique id of the request, which makes a request traceable throughout the network."
-									},
-									{
-										"key": "X-NLX-Request-Process-Id",
-										"value": "",
-										"description": "A process id for purpose registration (doelbinding)"
-									},
-									{
-										"key": "X-NLX-Request-Data-Elements",
-										"value": "",
-										"description": "A list of requested data elements"
-									},
-									{
-										"key": "X-NLX-Request-Data-Subject",
-										"value": "",
-										"description": "A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`"
-									},
-									{
-										"key": "X-NLX-Audit-Clarification",
-										"value": "",
-										"description": "A clarification as to why a request has been made  (doelbinding)"
-									},
-									{
-										"key": "Link",
-										"value": "",
-										"description": "A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel=\"hub\""
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/tabel56/:verblijfstitel?extend[]=<array>&fields[]=<array>&validOn=<dateTime>&validFrom=<dateTime>&validUntil=<dateTime>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"tabel56",
-										":verblijfstitel"
-									],
-									"query": [
-										{
-											"key": "extend[]",
-											"value": "<array>"
-										},
-										{
-											"key": "fields[]",
-											"value": "<array>"
-										},
-										{
-											"key": "validOn",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validFrom",
-											"value": "<dateTime>"
-										},
-										{
-											"key": "validUntil",
-											"value": "<dateTime>"
-										}
-									],
-									"variable": [
-										{
-											"key": "verblijfstitel"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
 				}
 			],
 			"protocolProfileBehavior": {}
 		}
 	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{authorization}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
@@ -6814,10 +3110,14 @@
 	],
 	"variable": [
 		{
-			"id": "bf3ae8dc-7b77-4c23-a8a2-08cb42cdf3e5",
+			"id": "9cfd9006-4e78-416a-8b63-fc81474397c1",
 			"key": "baseUrl",
-			"value": "http://localhost:8080",
-			"type": "string"
+			"value": "localhost"
+		},
+		{
+			"id": "3a78c28a-fe5a-41e0-86c3-992572152592",
+			"key": "authorization",
+			"value": "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
 		}
 	],
 	"protocolProfileBehavior": {}
