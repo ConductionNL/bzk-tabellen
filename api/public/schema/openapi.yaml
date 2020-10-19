@@ -7759,12 +7759,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-10-19 12:33:35'
+        example: '2020-10-19 12:39:17'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-10-19 12:33:35'
+        example: '2020-10-19 12:39:17'
     required: []
   AuditTrail-read:
     properties:
@@ -7870,12 +7870,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-10-19 12:33:35'
+        example: '2020-10-19 12:39:17'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-10-19 12:33:35'
+        example: '2020-10-19 12:39:17'
     required: []
   AuditTrail-write:
     properties:
@@ -7923,12 +7923,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-10-19 12:33:35'
+        example: '2020-10-19 12:39:17'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-10-19 12:33:35'
+        example: '2020-10-19 12:39:17'
     required: []
   ChangeLog-write:
     properties:

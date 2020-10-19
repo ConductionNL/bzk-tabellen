@@ -15,7 +15,7 @@ settings:
   repro: https://github.com/ConductionNL/landelijketabellencatalogus
   demo: ltc.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/ltc-php
-  domain: dev
+  domain: conduction.nl
   subdomain: ltc
   subpath: ltc
   subpathRouting: true
