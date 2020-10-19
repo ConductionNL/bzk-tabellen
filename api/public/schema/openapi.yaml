@@ -6114,7 +6114,7 @@ paths:
           in: query
       produces:
         - application/health+json
-  '/tabel56/{verblijfstitel}':
+  '/tabel56/{id}':
     get:
       tags:
         - Tabel56

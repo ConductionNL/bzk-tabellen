@@ -7,7 +7,7 @@ We first need to be sure the stable repository of helm and kubernetes is added. 
 $ helm repo list
 ```
 
-If in the output there is no repository 'stable' we need to add it:
+If in the output there is no repository 'stable' we need to add it: 
 
 ```CLI
 $ helm repo add stable https://kubernetes-charts.storage.googleapis.com
