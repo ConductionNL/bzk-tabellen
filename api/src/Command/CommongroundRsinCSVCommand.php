@@ -44,7 +44,7 @@ class CommongroundRsinCSVCommand extends Command
 
         $io->warning('Found '.count($rsins).' RSIN numbers to export');
 
-        $myfile = fopen('src/DataFixtures/Resources/RSIN.csv', 'w') or die('Unable to open file!');
+        $myfile = fopen('src/DataFixtures/Resources/RSIN.csv', 'w') or exit('Unable to open file!');
         fwrite($myfile, '"id","rsin","gemeenteCode","kvk"'."\n");
         foreach ($rsins as $rsin) {
             fwrite($myfile, $rsin->getId().','.$rsin->getRSIN().','.$rsin->getGemeenteCode().','.$rsin->getKVK()."\n");
@@ -57,7 +57,7 @@ class CommongroundRsinCSVCommand extends Command
 
         $io->warning('json Export complete');
 
-        $myfile = fopen('src/DataFixtures/Resources/RSIN.json', 'w') or die('Unable to open file!');
+        $myfile = fopen('src/DataFixtures/Resources/RSIN.json', 'w') or exit('Unable to open file!');
         fwrite($myfile, $json);
         fclose($myfile);
 
