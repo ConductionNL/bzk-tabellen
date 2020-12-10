@@ -10,7 +10,7 @@ info:
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/landelijketabellencatalogus) / [zip](https://github.com/ConductionNL/landelijketabellencatalogus/archive/master.zip)
     - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/ltc-php) 
-    - Datamodel: [postman](/schema/ltc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [modelio (zip)](/schema/Datamodel_Modelio.zip) 
+    - Datamodel: [postman](schema/ltc.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
     'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
@@ -7502,12 +7502,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
     required: []
   Tabel33-read:
     properties:
@@ -7534,7 +7534,7 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
     required: []
   Tabel34-read:
     properties:
@@ -7556,17 +7556,17 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
       fictieveDatumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
     required: []
   Tabel36-read:
     properties:
@@ -7603,12 +7603,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
     required: []
   Tabel38-read:
     properties:
@@ -7665,12 +7665,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
     required: []
   Tabel48-read:
     properties:
@@ -7691,12 +7691,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
     required: []
   Tabel49-read:
     properties:
@@ -7717,12 +7717,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2020-10-19'
+        example: '2020-12-10'
     required: []
   Tabel55-read:
     properties:
@@ -7759,12 +7759,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-10-19 12:39:17'
+        example: '2020-12-10 12:15:50'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2020-10-19 12:39:17'
+        example: '2020-12-10 12:15:50'
     required: []
   AuditTrail-read:
     properties:
@@ -7870,12 +7870,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-10-19 12:39:17'
+        example: '2020-12-10 12:15:50'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-10-19 12:39:17'
+        example: '2020-12-10 12:15:50'
     required: []
   AuditTrail-write:
     properties:
@@ -7923,12 +7923,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-10-19 12:39:17'
+        example: '2020-12-10 12:15:50'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-10-19 12:39:17'
+        example: '2020-12-10 12:15:50'
     required: []
   ChangeLog-write:
     properties:
