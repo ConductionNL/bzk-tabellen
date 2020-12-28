@@ -4,7 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Tabel34;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 
 class Tabel34Fixtures extends Fixture
 {

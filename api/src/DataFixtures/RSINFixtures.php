@@ -4,7 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\RSIN;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 
 class RSINFixtures extends Fixture
 {
@@ -13,7 +13,7 @@ class RSINFixtures extends Fixture
         $csv = fopen(dirname(__FILE__).'/Resources/RSIN.csv', 'r');
         $i = 0;
 
-        //var_dump(array_map("str_getcsv", file(dirname(__FILE__).'/Resources/Tabel32_Nationaliteitentabel.csv')));
+//        var_dump(array_map("str_getcsv", file(dirname(__FILE__).'/Resources/RSIN.csv')));
         while (!feof($csv)) {
             // Lets get a line from the csv file
             $line = fgetcsv($csv);
