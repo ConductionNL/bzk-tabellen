@@ -119,4 +119,4 @@ dependsOn:
 
 installations:
     - type: helm
-      url: "https://raw.githubusercontent.com/ConductionNL/landelijketabellencatalogus/master/api/helm"
+      url: "https://raw.githubusercontent.com/ConductionNL/landelijketabellencatalogus/master/api/helm/"
