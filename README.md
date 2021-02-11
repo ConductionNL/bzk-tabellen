@@ -1,38 +1,58 @@
-# About this component
+Additional Information
+----
 
-Het "Tabellen" component voorziet in een implementatiestrategie voor applicaties  die afhankelijk zijn van gegevens die op dit moment nog niet op Common Ground beschikbaar zijn, of nog niet op de manier waarop we deze beschikbaar willen hebben. Voorbeelden hiervan zijn de [RVIG Landelijke tabellen]( https://publicaties.rvig.nl/Landelijke_tabellen) en een Koppeltabel voor gemeentecodes naar RSIN. 
+For deployment to kubernetes clusters we use Helm 3.
 
-Het component biedt hierbij de mogelijkheid om deze bronnen te benaderen en te gebruiken als REST API (dus bijvoorbeeld de gemeentelijst te doorzoeken) conform de NL API strategie. Teruggegeven bronnen zijn voorzien van een URI endpoint waardoor deze gebruikt kunnen worden als bron. 
+For an in depth installation guide you can refer to the [installation guide](INSTALLATION.md).
 
-Hierbij is het nadrukkelijk mogelijk dat deze bronnen in de toekomst binnen dit component komen te vervallen doordat  zij zichzelf ontsluiten. In dat geval zal de URI door middel van een 301 redirect  worden doorverwezen naar de nieuwe bron. Hierdoor wordt continuiteit van verwijzingen geborgd.
+- [Contributing](CONTRIBUTING.md)
 
-Uiteindelijk faciliteert het component hiermee een methode om blokkerende externe dependencies terug te brengen. Door deze als het ware Common Ground op te trekken als koppeltabel. Hiermee is het mogelijk om implementaties inktvlek gewijs uit te voeren waarbij component voor component wordt overgetrokken terwijl een eventuele applicatie reeds in productie is.
+- [ChangeLogs](CHANGELOG.md)
 
-## Documentation
+- [RoadMap](ROADMAP.md)
 
-- [Installation manual](https://github.com/ConductionNL/bzk-tabellen/blob/master/INSTALLATION.md).
-- [contributing](https://github.com/ConductionNL/bzk-tabellen/blob/master/CONTRIBUTING.md) for tips tricks and general rules concerning contributing to this component.
-- [codebase](https://github.com/ConductionNL/bzk-tabellen) on github.
-- [codebase](https://github.com/ConductionNL/bzk-tabellen/archive/master.zip) as a download.
+- [Security](SECURITY.md)
 
-## Features
-This repository uses the power of the [commonground proto component](https://github.com/ConductionNL/commonground-component) provide common ground specific functionality based on the [VNG Api Strategie](https://docs.geostandaarden.nl/api/API-Strategie/). Including  
+- [Licence](LICENSE.md)
 
-* Build in support for public API's like BAG (Kadaster), KVK (Kamer van Koophandel)
-* Build in validators for common dutch variables like BSN (Burger service nummer), RSIN(), KVK(), BTW()
-* AVG and VNG proof audit trails, Wildcard searches, handling of incomplete date's and underInvestigation objects
-* Support for NLX headers
-* And [much more](https://github.com/ConductionNL/commonground-component) .... 
+Description
+----
 
-## License
-
-Copyright &copy; [Gemeente 's-Hertogenbosch](https://www.s-hertogenbosch.nl/) 2019
-
-Licensed under [EUPL](LICENCE.md)
-
-## Credits
-
-[![Conduction](https://raw.githubusercontent.com/ConductionNL/bzk-tabellen/master/resources/logo-conduction.svg?sanitize=true "Conduction")](https://www.conduction.nl/)
+Het Landelijke Tabellen Component voorziet in het ontsluiten van de landelijke index tabellen van BZK (NL dus), waar je bijvoorbeeld gemeentenummers kan terugvinden. Het voorziet in die zin in het via API beschikbaar stellen van niet Common Ground bronnen. 
 
 
+Tutorial
+----
 
+For information on how to work with the component you can refer to the tutorial [here](TUTORIAL.md).
+
+#### Setup your local environment
+Before we can spin up our component we must first get a local copy from our repository, we can either do this through the command line or use a Git client. 
+
+For this example we're going to use [GitKraken](https://www.gitkraken.com/) but you can use any tool you like, feel free to skip this part if you are already familiar with setting up a local clone of your repository.
+
+Open gitkraken press "clone a repo" and fill in the form (select where on your local machine you want the repository to be stored, and fill in the link of your repository on github), press "clone a repo" and you should then see GitKraken downloading your code. After it's done press "open now" (in the box on top) and voilá your codebase (you should see an initial commit on a master branch).
+
+You can now navigate to the folder where you just installed your code, it should contain some folders and files and generally look like this. We will get into the files later, lets first spin up our component!
+
+Next make sure you have [docker desktop](https://www.docker.com/products/docker-desktop) running on your computer.
+
+Open a command window (example) and browse to the folder where you just stuffed your code, navigating in a command window is done by cd, so for our example we could type 
+cd c:\repos\common-ground\my-component (if you installed your code on a different disk then where the cmd window opens first type <diskname>: for example D: and hit enter to go to that disk, D in this case). We are now in our folder, so let's go! Type docker-compose up and hit enter. From now on whenever we describe a command line command we will document it as follows (the $ isn't actually typed but represents your folder structure):
+
+```CLI
+$ docker-compose up
+```
+
+Your computer should now start up your local development environment. Don't worry about al the code coming by, let's just wait until it finishes. You're free to watch along and see what exactly docker is doing, you will know when it's finished when it tells you that it is ready to handle connections. 
+
+Open your browser type [<http://localhost/>](https://localhost) as address and hit enter, you should now see your common ground component up and running.
+
+
+Credits
+----
+
+Information about the authors of this component can be found [here](AUTHORS.md)
+
+
+Copyright © [Utrecht](https://www.utrecht.nl/) 2019
