@@ -3,10 +3,10 @@ entries:
   ltc:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2020-12-10T12:21:17.4939205Z"
+    created: "2021-02-11T08:37:23.8941559Z"
     description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql)
       interface beschikbaar.&#039;'
-    digest: 1acc24ad147339522a4eba32d76aae19a02b680740d50c49a95342699db31c6b
+    digest: 65ce1470c2388e67f273f16df77ef0ec5cd13a3fe72fcb83cec96a248b1eba20
     home: pc.zaakonline.nl
     icon: pc.zaakonline.nl
     name: ltc
@@ -18,7 +18,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2020-12-10T12:21:17.5088814Z"
+    created: "2021-02-11T08:37:23.9297487Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -47,4 +47,4 @@ entries:
     urls:
     - charts/postgresql-10.1.1.tgz
     version: 10.1.1
-generated: "2020-12-10T12:21:17.479263Z"
+generated: "2021-02-11T08:37:23.850903Z"
