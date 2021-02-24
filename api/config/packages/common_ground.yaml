@@ -36,6 +36,7 @@ parameters:
     env(APP_URL): "http://localhost"
   
     app_env: "%env(APP_ENV)%"
+    app_container: "%env(APP_CONTAINER)%"
     app_debug: "%env(APP_DEBUG)%"
     app_cache: "%env(APP_CACHE)%"
     app_auth: "%env(APP_AUTH)%"
