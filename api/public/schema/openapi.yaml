@@ -1,16 +1,16 @@
 openapi: 3.0.2
 info:
-  title: 'Landelijke Tabbelen Component'
+  title: ''
   version: V1.0
   description: |
     API Details
-    - Component: Landelijke Tabbelen Component
-    - Reference: ltc
+    - Component: 
+    - Reference: andelijketabellencatalogus
     - Enviroment: dev
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/landelijketabellencatalogus) / [zip](https://github.com/ConductionNL/landelijketabellencatalogus/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/ltc-php) 
-    - Datamodel: [postman](schema/ltc.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
+    - Docker Image: [online]() 
+    - Datamodel: [postman](schema/andelijketabellencatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
     Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
     
@@ -101,6 +101,296 @@ paths:
                 items:
                   $ref: '#/components/schemas/AuditTrail-read'
       parameters:
+        -
+          name: 'order[application]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[request]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[user]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[subject]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[resource]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[resourceType]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[endpoint]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[contentType]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[content]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[session]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateCreated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateModified]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: request
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'request[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: user
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'user[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: subject
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'subject[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: resource
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'resource[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: resourceType
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: endpoint
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'endpoint[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: contentType
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'contentType[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: content
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'content[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: session
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'session[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: 'dateCreated[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
         -
           name: page
           in: query
@@ -833,6 +1123,181 @@ paths:
                   $ref: '#/components/schemas/ChangeLog-read'
       parameters:
         -
+          name: 'order[action]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[objectId]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[objectClass]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[version]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[username]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateCreated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateModified]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: action
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'action[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: objectId
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'objectId[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: objectClass
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'objectClass[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: version
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'version[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+          explode: true
+        -
+          name: 'dateCreated[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
           name: page
           in: query
           required: false
@@ -1564,6 +2029,54 @@ paths:
                   $ref: '#/components/schemas/RSIN-read'
       parameters:
         -
+          name: rsin
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'rsin[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: kvk
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'kvk[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: gemeenteCode
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'gemeenteCode[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
           name: page
           in: query
           required: false
@@ -1870,6 +2383,28 @@ paths:
                 items:
                   $ref: '#/components/schemas/Tabel32-read'
       parameters:
+        -
+          name: nationaliteitcode
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'nationaliteitcode[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: omschrijving
+          in: query
+          required: false
+          schema:
+            type: string
         -
           name: page
           in: query
@@ -2178,6 +2713,28 @@ paths:
                   $ref: '#/components/schemas/Tabel33-read'
       parameters:
         -
+          name: gemeentecode
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'gemeentecode[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: omschrijving
+          in: query
+          required: false
+          schema:
+            type: string
+        -
           name: page
           in: query
           required: false
@@ -2484,6 +3041,28 @@ paths:
                 items:
                   $ref: '#/components/schemas/Tabel34-read'
       parameters:
+        -
+          name: landcode
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'landcode[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: omschrijving
+          in: query
+          required: false
+          schema:
+            type: string
         -
           name: page
           in: query
@@ -2792,6 +3371,12 @@ paths:
                   $ref: '#/components/schemas/Tabel36-read'
       parameters:
         -
+          name: voorvoegsel
+          in: query
+          required: false
+          schema:
+            type: string
+        -
           name: page
           in: query
           required: false
@@ -3098,6 +3683,44 @@ paths:
                 items:
                   $ref: '#/components/schemas/Tabel37-read'
       parameters:
+        -
+          name: reden
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'reden[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: omschrijving
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: soort
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'soort[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
         -
           name: page
           in: query
@@ -3406,6 +4029,28 @@ paths:
                   $ref: '#/components/schemas/Tabel38-read'
       parameters:
         -
+          name: adellijkeTitelPredikaat
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'adellijkeTitelPredikaat[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: omschrijving
+          in: query
+          required: false
+          schema:
+            type: string
+        -
           name: page
           in: query
           required: false
@@ -3712,6 +4357,28 @@ paths:
                 items:
                   $ref: '#/components/schemas/Tabel39-read'
       parameters:
+        -
+          name: akteaanduiding
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'akteaanduiding[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: omschrijving
+          in: query
+          required: false
+          schema:
+            type: string
         -
           name: page
           in: query
@@ -4020,6 +4687,28 @@ paths:
                   $ref: '#/components/schemas/Tabel41-read'
       parameters:
         -
+          name: reden
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'reden[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: omschrijving
+          in: query
+          required: false
+          schema:
+            type: string
+        -
           name: page
           in: query
           required: false
@@ -4326,6 +5015,28 @@ paths:
                 items:
                   $ref: '#/components/schemas/Tabel48-read'
       parameters:
+        -
+          name: nederlandsReisdocument
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'nederlandsReisdocument[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: omschrijving
+          in: query
+          required: false
+          schema:
+            type: string
         -
           name: page
           in: query
@@ -4634,6 +5345,28 @@ paths:
                   $ref: '#/components/schemas/Tabel49-read'
       parameters:
         -
+          name: autoriteitVanAfgifte
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'autoriteitVanAfgifte[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: omschrijving
+          in: query
+          required: false
+          schema:
+            type: string
+        -
           name: page
           in: query
           required: false
@@ -4941,6 +5674,28 @@ paths:
                   $ref: '#/components/schemas/Tabel55-read'
       parameters:
         -
+          name: afnemersaanduiding
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'afnemersaanduiding[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: omschrijving
+          in: query
+          required: false
+          schema:
+            type: string
+        -
           name: page
           in: query
           required: false
@@ -5247,6 +6002,28 @@ paths:
                 items:
                   $ref: '#/components/schemas/Tabel56-read'
       parameters:
+        -
+          name: verblijfstitel
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'verblijfstitel[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: omschrijving
+          in: query
+          required: false
+          schema:
+            type: string
         -
           name: page
           in: query
@@ -6725,12 +7502,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
     required: []
   Tabel33-read:
     properties:
@@ -6757,7 +7534,7 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
     required: []
   Tabel34-read:
     properties:
@@ -6779,17 +7556,17 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
       fictieveDatumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
     required: []
   Tabel36-read:
     properties:
@@ -6826,12 +7603,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
     required: []
   Tabel38-read:
     properties:
@@ -6888,12 +7665,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
     required: []
   Tabel48-read:
     properties:
@@ -6914,12 +7691,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
     required: []
   Tabel49-read:
     properties:
@@ -6940,12 +7717,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-02-18'
+        example: '2021-03-01'
     required: []
   Tabel55-read:
     properties:
@@ -6982,12 +7759,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2021-02-18 02:05:13'
+        example: '2021-03-01 20:46:26'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2021-02-18 02:05:13'
+        example: '2021-03-01 20:46:26'
     required: []
   AuditTrail-read:
     properties:
@@ -7093,12 +7870,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-18 02:05:13'
+        example: '2021-03-01 20:46:26'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-18 02:05:13'
+        example: '2021-03-01 20:46:26'
     required: []
   AuditTrail-write:
     properties:
@@ -7146,12 +7923,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-02-18 02:05:13'
+        example: '2021-03-01 20:46:26'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-02-18 02:05:13'
+        example: '2021-03-01 20:46:26'
     required: []
   ChangeLog-write:
     properties:
@@ -7271,7 +8048,7 @@ host: irc.zaakonline.nl
 servers:
   -
     name: conduction.nl
-    url: ltc.dev.conduction.nl
+    url: andelijketabellencatalogus.dev.conduction.nl
 externalDocs:
   -
     description: 'OAS Documentatie'
