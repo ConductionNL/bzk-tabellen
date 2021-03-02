@@ -5,12 +5,12 @@ info:
   description: |
     API Details
     - Component: 
-    - Reference: landelijketabellencatalogus
+    - Reference: andelijketabellencatalogus
     - Enviroment: dev
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/landelijketabellencatalogus) / [zip](https://github.com/ConductionNL/landelijketabellencatalogus/archive/master.zip)
     - Docker Image: [online]() 
-    - Datamodel: [postman](schema/landelijketabellencatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
+    - Datamodel: [postman](schema/andelijketabellencatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
     Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
     
@@ -7459,42 +7459,22 @@ components:
         - verblijfstitel
         - omschrijving
 definitions:
-  RSIN-read:
+  Tabel37-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      rsin:
-        description: ''
+      reden:
+        description: redenOpnemenBeeindigenNationaliteit
         type: string
-        maxLength: 9
-        minLength: 9
-      kvk:
-        description: ''
-        type: string
-        maxLength: 9
-        minLength: 9
-      gemeenteCode:
-        description: ''
-        type: string
-        maxLength: 4
-        minLength: 4
-    required: []
-  Tabel32-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      nationaliteitcode:
-        description: ''
-        type: string
-        maxLength: 5
-        minLength: 4
+        maxLength: 255
       omschrijving:
+        description: ''
+        type: string
+        maxLength: 255
+      soort:
         description: ''
         type: string
         maxLength: 255
@@ -7503,33 +7483,6 @@ definitions:
         type: string
         format: date
         example: '2021-03-02'
-      datumEinde:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date
-        example: '2021-03-02'
-    required: []
-  Tabel33-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      gemeentecode:
-        description: ''
-        type: string
-        maxLength: 4
-        minLength: 4
-      omschrijving:
-        description: ''
-        type: string
-        maxLength: 255
-      nieuweCode:
-        description: ''
-        type: string
-        maxLength: 4
-        minLength: 4
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
@@ -7568,48 +7521,6 @@ definitions:
         format: date
         example: '2021-03-02'
     required: []
-  Tabel36-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      voorvoegsel:
-        description: ''
-        type: string
-        maxLength: 255
-    required: []
-  Tabel37-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      reden:
-        description: redenOpnemenBeeindigenNationaliteit
-        type: string
-        maxLength: 255
-      omschrijving:
-        description: ''
-        type: string
-        maxLength: 255
-      soort:
-        description: ''
-        type: string
-        maxLength: 255
-      datumIngang:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date
-        example: '2021-03-02'
-      datumEinde:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date
-        example: '2021-03-02'
-    required: []
   Tabel38-read:
     properties:
       id:
@@ -7630,30 +7541,14 @@ definitions:
         type: string
         maxLength: 255
     required: []
-  Tabel39-read:
+  Tabel56-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      akteaanduiding:
-        description: ''
-        type: string
-        maxLength: 255
-      omschrijving:
-        description: ''
-        type: string
-        maxLength: 255
-    required: []
-  Tabel41-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      reden:
+      verblijfstitel:
         description: ''
         type: string
         maxLength: 255
@@ -7664,22 +7559,22 @@ definitions:
       datumIngang:
         description: 'A "Y-m-d" formatted value'
         type: string
-        format: date
-        example: '2021-03-02'
+        format: date-time
+        example: '2021-03-02 16:02:05'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
-        format: date
-        example: '2021-03-02'
+        format: date-time
+        example: '2021-03-02 16:02:05'
     required: []
-  Tabel48-read:
+  Tabel41-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      nederlandsReisdocument:
+      reden:
         description: ''
         type: string
         maxLength: 255
@@ -7724,6 +7619,34 @@ definitions:
         format: date
         example: '2021-03-02'
     required: []
+  Tabel39-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      akteaanduiding:
+        description: ''
+        type: string
+        maxLength: 255
+      omschrijving:
+        description: ''
+        type: string
+        maxLength: 255
+    required: []
+  Tabel36-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      voorvoegsel:
+        description: ''
+        type: string
+        maxLength: 255
+    required: []
   Tabel55-read:
     properties:
       id:
@@ -7740,14 +7663,68 @@ definitions:
         type: string
         maxLength: 255
     required: []
-  Tabel56-read:
+  Tabel33-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      verblijfstitel:
+      gemeentecode:
+        description: ''
+        type: string
+        maxLength: 4
+        minLength: 4
+      omschrijving:
+        description: ''
+        type: string
+        maxLength: 255
+      nieuweCode:
+        description: ''
+        type: string
+        maxLength: 4
+        minLength: 4
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2021-03-02'
+    required: []
+  Tabel32-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      nationaliteitcode:
+        description: ''
+        type: string
+        maxLength: 5
+        minLength: 4
+      omschrijving:
+        description: ''
+        type: string
+        maxLength: 255
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2021-03-02'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2021-03-02'
+    required: []
+  Tabel48-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      nederlandsReisdocument:
         description: ''
         type: string
         maxLength: 255
@@ -7758,13 +7735,36 @@ definitions:
       datumIngang:
         description: 'A "Y-m-d" formatted value'
         type: string
-        format: date-time
-        example: '2021-03-02 08:24:42'
+        format: date
+        example: '2021-03-02'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
-        format: date-time
-        example: '2021-03-02 08:24:42'
+        format: date
+        example: '2021-03-02'
+    required: []
+  RSIN-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      rsin:
+        description: ''
+        type: string
+        maxLength: 9
+        minLength: 9
+      kvk:
+        description: ''
+        type: string
+        maxLength: 9
+        minLength: 9
+      gemeenteCode:
+        description: ''
+        type: string
+        maxLength: 4
+        minLength: 4
     required: []
   AuditTrail-read:
     properties:
@@ -7870,12 +7870,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-02 08:24:42'
+        example: '2021-03-02 16:02:05'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-02 08:24:42'
+        example: '2021-03-02 16:02:05'
     required: []
   AuditTrail-write:
     properties:
@@ -7923,12 +7923,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-02 08:24:42'
+        example: '2021-03-02 16:02:05'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-02 08:24:42'
+        example: '2021-03-02 16:02:05'
     required: []
   ChangeLog-write:
     properties:
@@ -7940,21 +7940,9 @@ definitions:
     required: []
 tags:
   -
-    name: RSIN
+    name: Tabel37
     description: |
-      RSIN.
-      
-      Tevens te vinden via https://openkvk.nl/, te checken via SBI 8411 en naam gelijk aan  "Gemeente XXX"
-  -
-    name: Tabel32
-    description: |
-      Nationaliteitcodes.
-      
-      
-  -
-    name: Tabel33
-    description: |
-      Gemeentecodes.
+      redenOpnemenBeeindigenNationaliteit.
       
       
   -
@@ -7964,27 +7952,15 @@ tags:
       
       
   -
-    name: Tabel36
-    description: |
-      Voorvoegsels.
-      
-      
-  -
-    name: Tabel37
-    description: |
-      redenOpnemenBeeindigenNationaliteit.
-      
-      
-  -
     name: Tabel38
     description: |
       Adellijke titel/predikaat.
       
       
   -
-    name: Tabel39
+    name: Tabel56
     description: |
-      Akteaanduiding.
+      Verblijfstitel.
       
       
   -
@@ -7994,15 +7970,21 @@ tags:
       
       
   -
-    name: Tabel48
-    description: |
-      Nederlands reisdocument.
-      
-      
-  -
     name: Tabel49
     description: |
       Autoriteit van afgifte Nederlands reisdocument.
+      
+      
+  -
+    name: Tabel39
+    description: |
+      Akteaanduiding.
+      
+      
+  -
+    name: Tabel36
+    description: |
+      Voorvoegsels.
       
       
   -
@@ -8012,11 +7994,29 @@ tags:
       
       
   -
-    name: Tabel56
+    name: Tabel33
     description: |
-      Verblijfstitel.
+      Gemeentecodes.
       
       
+  -
+    name: Tabel32
+    description: |
+      Nationaliteitcodes.
+      
+      
+  -
+    name: Tabel48
+    description: |
+      Nederlands reisdocument.
+      
+      
+  -
+    name: RSIN
+    description: |
+      RSIN.
+      
+      Tevens te vinden via https://openkvk.nl/, te checken via SBI 8411 en naam gelijk aan  "Gemeente XXX"
   -
     name: AuditTrail
     description: |
@@ -8048,7 +8048,7 @@ host: irc.zaakonline.nl
 servers:
   -
     name: conduction.nl
-    url: landelijketabellencatalogus.dev.conduction.nl
+    url: andelijketabellencatalogus.dev.conduction.nl
 externalDocs:
   -
     description: 'OAS Documentatie'
