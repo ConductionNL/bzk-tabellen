@@ -5,12 +5,12 @@ info:
   description: |
     API Details
     - Component: 
-    - Reference: landelijketabellencatalogus
+    - Reference: andelijketabellencatalogus
     - Enviroment: dev
     - Version: V1.0
     - Repository: [online](https://github.com/ConductionNL/landelijketabellencatalogus) / [zip](https://github.com/ConductionNL/landelijketabellencatalogus/archive/master.zip)
     - Docker Image: [online]() 
-    - Datamodel: [postman](schema/landelijketabellencatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
+    - Datamodel: [postman](schema/andelijketabellencatalogus.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
     Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
     
@@ -7459,6 +7459,62 @@ components:
         - verblijfstitel
         - omschrijving
 definitions:
+  Tabel37-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      reden:
+        description: redenOpnemenBeeindigenNationaliteit
+        type: string
+        maxLength: 255
+      omschrijving:
+        description: ''
+        type: string
+        maxLength: 255
+      soort:
+        description: ''
+        type: string
+        maxLength: 255
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2021-03-04'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2021-03-04'
+    required: []
+  Tabel56-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      verblijfstitel:
+        description: ''
+        type: string
+        maxLength: 255
+      omschrijving:
+        description: ''
+        type: string
+        maxLength: 255
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date-time
+        example: '2021-03-04 13:54:21'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date-time
+        example: '2021-03-04 13:54:21'
+    required: []
   RSIN-read:
     properties:
       id:
@@ -7481,33 +7537,6 @@ definitions:
         type: string
         maxLength: 4
         minLength: 4
-    required: []
-  Tabel32-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      nationaliteitcode:
-        description: ''
-        type: string
-        maxLength: 5
-        minLength: 4
-      omschrijving:
-        description: ''
-        type: string
-        maxLength: 255
-      datumIngang:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date
-        example: '2021-03-02'
-      datumEinde:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date
-        example: '2021-03-02'
     required: []
   Tabel33-read:
     properties:
@@ -7534,39 +7563,7 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-03-02'
-    required: []
-  Tabel34-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      landcode:
-        description: ''
-        type: string
-        maxLength: 5
-        minLength: 4
-      omschrijving:
-        description: ''
-        type: string
-        maxLength: 255
-      datumIngang:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date
-        example: '2021-03-02'
-      datumEinde:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date
-        example: '2021-03-02'
-      fictieveDatumEinde:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date
-        example: '2021-03-02'
+        example: '2021-03-04'
     required: []
   Tabel36-read:
     properties:
@@ -7576,72 +7573,6 @@ definitions:
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
       voorvoegsel:
-        description: ''
-        type: string
-        maxLength: 255
-    required: []
-  Tabel37-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      reden:
-        description: redenOpnemenBeeindigenNationaliteit
-        type: string
-        maxLength: 255
-      omschrijving:
-        description: ''
-        type: string
-        maxLength: 255
-      soort:
-        description: ''
-        type: string
-        maxLength: 255
-      datumIngang:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date
-        example: '2021-03-02'
-      datumEinde:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date
-        example: '2021-03-02'
-    required: []
-  Tabel38-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      adellijkeTitelPredikaat:
-        description: ''
-        type: string
-        maxLength: 255
-      omschrijving:
-        description: ''
-        type: string
-        maxLength: 255
-      soort:
-        description: ''
-        type: string
-        maxLength: 255
-    required: []
-  Tabel39-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      akteaanduiding:
-        description: ''
-        type: string
-        maxLength: 255
-      omschrijving:
         description: ''
         type: string
         maxLength: 255
@@ -7665,12 +7596,87 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-03-02'
+        example: '2021-03-04'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-03-02'
+        example: '2021-03-04'
+    required: []
+  Tabel32-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      nationaliteitcode:
+        description: ''
+        type: string
+        maxLength: 5
+        minLength: 4
+      omschrijving:
+        description: ''
+        type: string
+        maxLength: 255
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2021-03-04'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2021-03-04'
+    required: []
+  Tabel55-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      afnemersaanduiding:
+        description: ''
+        type: string
+        maxLength: 255
+      omschrijving:
+        description: ''
+        type: string
+        maxLength: 255
+    required: []
+  Tabel34-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      landcode:
+        description: ''
+        type: string
+        maxLength: 5
+        minLength: 4
+      omschrijving:
+        description: ''
+        type: string
+        maxLength: 255
+      datumIngang:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2021-03-04'
+      datumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2021-03-04'
+      fictieveDatumEinde:
+        description: 'A "Y-m-d" formatted value'
+        type: string
+        format: date
+        example: '2021-03-04'
     required: []
   Tabel48-read:
     properties:
@@ -7691,12 +7697,48 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-03-02'
+        example: '2021-03-04'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-03-02'
+        example: '2021-03-04'
+    required: []
+  Tabel39-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      akteaanduiding:
+        description: ''
+        type: string
+        maxLength: 255
+      omschrijving:
+        description: ''
+        type: string
+        maxLength: 255
+    required: []
+  Tabel38-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      adellijkeTitelPredikaat:
+        description: ''
+        type: string
+        maxLength: 255
+      omschrijving:
+        description: ''
+        type: string
+        maxLength: 255
+      soort:
+        description: ''
+        type: string
+        maxLength: 255
     required: []
   Tabel49-read:
     properties:
@@ -7717,54 +7759,65 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-03-02'
+        example: '2021-03-04'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-03-02'
+        example: '2021-03-04'
     required: []
-  Tabel55-read:
+  ChangeLog-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      afnemersaanduiding:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
         description: ''
         type: string
-        maxLength: 255
-      omschrijving:
+      objectId:
         description: ''
         type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
         maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2021-03-04 13:54:21'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2021-03-04 13:54:21'
     required: []
-  Tabel56-read:
+  ChangeLog-write:
     properties:
-      id:
-        description: 'The UUID identifier of this object'
+      note:
+        description: 'A note conserning this log lin'
         type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      verblijfstitel:
-        description: ''
-        type: string
-        maxLength: 255
-      omschrijving:
-        description: ''
-        type: string
-        maxLength: 255
-      datumIngang:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date-time
-        example: '2021-03-02 08:24:42'
-      datumEinde:
-        description: 'A "Y-m-d" formatted value'
-        type: string
-        format: date-time
-        example: '2021-03-02 08:24:42'
+        example: 'This log line is suspicius'
+        maxLength: 2555
     required: []
   AuditTrail-read:
     properties:
@@ -7870,12 +7923,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-03-02 08:24:42'
+        example: '2021-03-04 13:54:21'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-03-02 08:24:42'
+        example: '2021-03-04 13:54:21'
     required: []
   AuditTrail-write:
     properties:
@@ -7885,130 +7938,11 @@ definitions:
         example: 'This log line looks suspicius'
         maxLength: 2555
     required: []
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2021-03-02 08:24:42'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2021-03-02 08:24:42'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
 tags:
-  -
-    name: RSIN
-    description: |
-      RSIN.
-      
-      Tevens te vinden via https://openkvk.nl/, te checken via SBI 8411 en naam gelijk aan  "Gemeente XXX"
-  -
-    name: Tabel32
-    description: |
-      Nationaliteitcodes.
-      
-      
-  -
-    name: Tabel33
-    description: |
-      Gemeentecodes.
-      
-      
-  -
-    name: Tabel34
-    description: |
-      Landen Tabels.
-      
-      
-  -
-    name: Tabel36
-    description: |
-      Voorvoegsels.
-      
-      
   -
     name: Tabel37
     description: |
       redenOpnemenBeeindigenNationaliteit.
-      
-      
-  -
-    name: Tabel38
-    description: |
-      Adellijke titel/predikaat.
-      
-      
-  -
-    name: Tabel39
-    description: |
-      Akteaanduiding.
-      
-      
-  -
-    name: Tabel41
-    description: |
-      Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap.
-      
-      
-  -
-    name: Tabel48
-    description: |
-      Nederlands reisdocument.
-      
-      
-  -
-    name: Tabel49
-    description: |
-      Autoriteit van afgifte Nederlands reisdocument.
-      
-      
-  -
-    name: Tabel55
-    description: |
-      PK Afnemers.
       
       
   -
@@ -8018,13 +7952,79 @@ tags:
       
       
   -
-    name: AuditTrail
+    name: RSIN
+    description: |
+      RSIN.
+      
+      Tevens te vinden via https://openkvk.nl/, te checken via SBI 8411 en naam gelijk aan  "Gemeente XXX"
+  -
+    name: Tabel33
+    description: |
+      Gemeentecodes.
+      
+      
+  -
+    name: Tabel36
+    description: |
+      Voorvoegsels.
+      
+      
+  -
+    name: Tabel41
+    description: |
+      Reden ontbinding/nietigverklaring huwelijk/geregistreerd partnerschap.
+      
+      
+  -
+    name: Tabel32
+    description: |
+      Nationaliteitcodes.
+      
+      
+  -
+    name: Tabel55
+    description: |
+      PK Afnemers.
+      
+      
+  -
+    name: Tabel34
+    description: |
+      Landen Tabels.
+      
+      
+  -
+    name: Tabel48
+    description: |
+      Nederlands reisdocument.
+      
+      
+  -
+    name: Tabel39
+    description: |
+      Akteaanduiding.
+      
+      
+  -
+    name: Tabel38
+    description: |
+      Adellijke titel/predikaat.
+      
+      
+  -
+    name: Tabel49
+    description: |
+      Autoriteit van afgifte Nederlands reisdocument.
+      
+      
+  -
+    name: ChangeLog
     description: |
       An resource representing a log line.
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
-    name: ChangeLog
+    name: AuditTrail
     description: |
       An resource representing a log line.
       
@@ -8035,20 +8035,20 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
 host: irc.zaakonline.nl
 servers:
   -
     name: conduction.nl
-    url: landelijketabellencatalogus.dev.conduction.nl
+    url: andelijketabellencatalogus.dev.conduction.nl
 externalDocs:
   -
     description: 'OAS Documentatie'

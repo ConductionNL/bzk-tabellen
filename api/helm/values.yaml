@@ -4,15 +4,15 @@
 
 settings:
   registryBase: docker.io/conduction
-  projectName: landelijketabellencatalogus
-  name: landelijketabellencatalogus
+  projectName: andelijketabellencatalogus
+  name: andelijketabellencatalogus
   version: V1.0
   majorVersion: v1
   description: 'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'
   repro: https://github.com/ConductionNL/landelijketabellencatalogus
   demo: ltc.zaakonline.nl
   domain: conduction.nl
-  subdomain: landelijketabellencatalogus
+  subdomain: andelijketabellencatalogus
   subpath: landelijketabellencatalogus
   subpathRouting: true
   env: dev
@@ -55,10 +55,9 @@ php:
 redis:
   cluster:
     enabled: false
-  enabled: false
   redisPort: 6379
   usePassword: false
-
+  enabled: false
 commonground:
   eherkenning:
     location: https://conduction.nl/eherkenning

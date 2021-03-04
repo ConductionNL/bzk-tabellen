@@ -1,4 +1,4 @@
-# andelijketabellencatalogus
+# landelijketabellencatalogus
 
 Description
 ----
