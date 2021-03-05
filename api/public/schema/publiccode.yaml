@@ -1,6 +1,6 @@
 publiccodeYmlVersion: "0.2"
 
-name: andelijketabellencatalogus
+name: landelijketabellencatalogus
 applicationSuite: commonground
 url: "https://github.com/ConductionNL/landelijketabellencatalogus"
 landingURL: "ltc.zaakonline.nl"
