@@ -3,7 +3,7 @@ publiccodeYmlVersion: "0.2"
 name: andelijketabellencatalogus
 applicationSuite: commonground
 url: "https://github.com/ConductionNL/landelijketabellencatalogus"
-landingURL: "ltc.zaakonline.nl"
+landingURL: "https://zuid-drecht.nl/api/v1/ltc"
 isBasedOn: "https://github.com/ConductionNL/Proto-component-commonground.git"
 softwareVersion: "V1.0"
 releaseDate: "2021-01-03"
@@ -44,7 +44,7 @@ roadmap: "https://github.com/ConductionNL/landelijketabellencatalogus/blob/maste
 
 developmentStatus: development
 
-softwareType: "standalone/other"
+softwareType: "standalone/Api"
 
 #intendedAudience:
 #  scope:
@@ -116,6 +116,7 @@ dependsOn:
     open:
         - name: Kubernetes
           versionMin: "1.15.5-do.1"
+        - name: landelijketabellencatalogus/landelijketabellencatalogus
 
 installations:
     - type: helm
