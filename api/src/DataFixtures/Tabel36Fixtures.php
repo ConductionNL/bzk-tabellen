@@ -5,7 +5,6 @@ namespace App\DataFixtures;
 use App\Entity\Tabel36;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use function Composer\Autoload\includeFile;
 
 class Tabel36Fixtures extends Fixture
 {
@@ -27,11 +26,9 @@ class Tabel36Fixtures extends Fixture
 
             try {
                 $first = substr($line[0], 0, 1);
-
-            }catch (\Throwable $e) {
+            } catch (\Throwable $e) {
                 $first = '.';
             }
-
 
             if ($first !== '.') {
                 // Creating the enity fro the csv values
@@ -41,7 +38,6 @@ class Tabel36Fixtures extends Fixture
                 // Persisting the enity
                 $manager->persist($entity);
             }
-
 
             // Every 25 rows we want to save to the database and clear our objects in order to prevent an extreme memory load
             if (($i % 25) === 0) {
