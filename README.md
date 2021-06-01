@@ -1,9 +1,12 @@
-# ltc
+# Landelijke Tabellen Catalogus
+[![StyleCI](https://github.styleci.io/repos/206147743/shield?branch=master)](https://github.styleci.io/repos/206147743?branch=master)
+[![Docker Image CI](https://github.com/ConductionNL/landelijketabellencatalogus/workflows/Docker%20Image%20CI/badge.svg?branch=master)](https://github.com/ConductionNL/landelijketabellencatalogus/actions?query=workflow%3A"Docker+Image+CI")
+[![Artifacthub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/landelijketabellencatalogus)](https://artifacthub.io/packages/helm/landelijketabellencatalogus/landelijketabellencatalogus)
+[![BCH compliance](https://bettercodehub.com/edge/badge/ConductionNL/landelijketabellencatalogus?branch=master)](https://bettercodehub.com/)
 
 Description
 ----
-Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.
-
+Het Landelijke Tabellen Component voorziet in het ontsluiten van de landelijke index tabellen van BZK (NL dus) waar je bijvoorbeeld gemeenten nummers kan terugvinden. Het voorziet in die zin in het via API beschikbaar stellen van niet Common Ground bronnen.
 Additional Information
 ----
 
