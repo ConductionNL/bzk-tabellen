@@ -1,12 +1,12 @@
 apiVersion: v1
 entries:
-  andelijketabellencatalogus:
+  landelijketabellencatalogus:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-06-07T09:32:51.3796154Z"
+    created: "2021-06-16T13:48:59.0410267Z"
     description: Naast deze JSON rest API is er ook een [graphql](/graphql) interface
       beschikbaar.
-    digest: 6b0747840ffe9e3859a945b8247e5121a236aa61756aaa57ed7d1610e7f92d8a
+    digest: 79fedf877e5da76b90aaaa8ecb99a5dac06199432612b9a2a5bb0c75562ec8f5
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -19,19 +19,19 @@ entries:
       name: Ruben van der Linde
     - email: info@conduction.nl
       name: Conduction
-    name: andelijketabellencatalogus
+    name: landelijketabellencatalogus
     sources:
     - https://commonground.conduction.nl/
     - https://www.commonground.nl/
     urls:
-    - andelijketabellencatalogus-0.1.0.tgz
+    - landelijketabellencatalogus-0.1.0.tgz
     version: 0.1.0
   postgresql:
   - annotations:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-06-07T09:32:51.3956566Z"
+    created: "2021-06-16T13:48:59.2390233Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -60,4 +60,4 @@ entries:
     urls:
     - charts/postgresql-10.1.1.tgz
     version: 10.1.1
-generated: "2021-06-07T09:32:51.3611402Z"
+generated: "2021-06-16T13:48:58.9590043Z"

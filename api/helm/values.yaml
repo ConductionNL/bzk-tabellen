@@ -4,16 +4,16 @@
 
 settings:
   registryBase: docker.io/conduction
-  projectName: andelijketabellencatalogus
-  name: andelijketabellencatalogus
+  projectName: landelijketabellencatalogus
+  name: landelijketabellencatalogus
   version: V1.0
   majorVersion: v1
-  description: 'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'
+  description: 'Het Landelijke Tabellen Component voorziet in het ontsluiten van de landelijke index tabellen van BZK (NL dus) waar je bijvoorbeeld gemeenten nummers kan terugvinden. Het voorziet in die zin in het via API beschikbaar stellen van niet Common Ground bronnen.'
   repro: https://github.com/ConductionNL/landelijketabellencatalogus
   demo: ltc.zaakonline.nl
   domain: conduction.nl
-  subdomain: andelijketabellencatalogus
-  subpath: andelijketabellencatalogus
+  subdomain: landelijketabellencatalogus
+  subpath: landelijketabellencatalogus
   subpathRouting: true
   env: dev
   web: false
