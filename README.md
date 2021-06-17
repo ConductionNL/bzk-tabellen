@@ -1,8 +1,10 @@
 # Landelijke Tabellen Catalogus
+
 [![StyleCI](https://github.styleci.io/repos/206147743/shield?branch=master)](https://github.styleci.io/repos/206147743?branch=master)
 [![Docker Image CI](https://github.com/ConductionNL/landelijketabellencatalogus/workflows/Docker%20Image%20CI/badge.svg?branch=master)](https://github.com/ConductionNL/landelijketabellencatalogus/actions?query=workflow%3A"Docker+Image+CI")
 [![Artifacthub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/landelijketabellencatalogus)](https://artifacthub.io/packages/helm/landelijketabellencatalogus/landelijketabellencatalogus)
 [![BCH compliance](https://bettercodehub.com/edge/badge/ConductionNL/landelijketabellencatalogus?branch=master)](https://bettercodehub.com/)
+[![Status badge](https://shields.api-test.nl/endpoint.svg?style=for-the-badge&url=https%3A//api-test.nl/api/v1/provider-latest-badge/35e58de5-522e-4263-b17c-eae70ca57142/)](https://api-test.nl/server/4/104ccbb2-eae1-4019-8378-ef41749adcaf/35e58de5-522e-4263-b17c-eae70ca57142/latest/)
 
 Description
 ----
