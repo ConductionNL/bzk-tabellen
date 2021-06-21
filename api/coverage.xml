@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1624282116">
-  <project timestamp="1624282116">
+<coverage generated="1624283329">
+  <project timestamp="1624283329">
     <file name="/srv/api/src/Command/CommongroundRsinCSVCommand.php">
       <class name="App\Command\CommongroundRsinCSVCommand" namespace="global">
         <metrics complexity="6" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="0" elements="26" coveredelements="0"/>
