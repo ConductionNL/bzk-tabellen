@@ -3,9 +3,12 @@ entries:
   landelijketabellencatalogus:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-06-22T09:37:24.7148273+02:00"
-    description: Het Landelijke Tabellen Component voorziet in het ontsluiten van de landelijke index tabellen van BZK (NL dus) waar je bijvoorbeeld gemeenten nummers kan terugvinden. Het voorziet in die zin in het via API beschikbaar stellen van niet Common Ground bronnen.
-    digest: aaf38c4dd5a1e17bb222216841f771ebfb884268a3820b6950aea3fd9f5e1548
+    created: "2021-06-22T07:52:53.553254Z"
+    description: Het Landelijke Tabellen Component voorziet in het ontsluiten van
+      de landelijke index tabellen van BZK (NL dus) waar je bijvoorbeeld gemeenten
+      nummers kan terugvinden. Het voorziet in die zin in het via API beschikbaar
+      stellen van niet Common Ground bronnen.
+    digest: 418ed4e00263fda839ee0769009086c8910529d9a3c26e46bb8bf42ef2617c79
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -30,12 +33,13 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-06-22T09:37:24.7178267+02:00"
+    created: "2021-06-22T07:52:53.5588301Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
       version: 1.x.x
-    description: Chart for PostgreSQL, an object-relational database management system (ORDBMS) with an emphasis on extensibility and on standards-compliance.
+    description: Chart for PostgreSQL, an object-relational database management system
+      (ORDBMS) with an emphasis on extensibility and on standards-compliance.
     digest: eebe8f456cf98d5927a35666d1d899174dc4d3e09f26788033f761527bc90749
     home: https://github.com/bitnami/charts/tree/master/bitnami/postgresql
     icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-110x117.png
@@ -63,14 +67,16 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 6.0.11
-    created: "2021-06-22T09:37:24.7208292+02:00"
+    created: "2021-06-22T07:52:53.5639228Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
       tags:
       - bitnami-common
       version: 1.x.x
-    description: Open source, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
+    description: Open source, advanced key-value store. It is often referred to as
+      a data structure server since keys can contain strings, hashes, lists, sets
+      and sorted sets.
     digest: 2d70861d16fc410ed6d6c818b97f7b0d519031147e5c7b42c5691d4c38742c44
     home: https://github.com/bitnami/charts/tree/master/bitnami/redis
     icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
@@ -90,4 +96,4 @@ entries:
     urls:
     - charts/redis-12.7.7.tgz
     version: 12.7.7
-generated: "2021-06-22T09:37:24.7058272+02:00"
+generated: "2021-06-22T07:52:53.5406443Z"
