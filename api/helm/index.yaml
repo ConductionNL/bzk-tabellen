@@ -3,9 +3,9 @@ entries:
   landelijketabellencatalogus:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-06-22T09:59:26.1842471+02:00"
+    created: "2021-06-22T10:05:29.4402018+02:00"
     description: Het Landelijke Tabellen Component voorziet in het ontsluiten van de landelijke index tabellen van BZK (NL dus) waar je bijvoorbeeld gemeenten nummers kan terugvinden. Het voorziet in die zin in het via API beschikbaar stellen van niet Common Ground bronnen.
-    digest: 0a6ceedda73d59bb087e34d39ceb32d8a64bb669309682490e909c6c549bafdf
+    digest: a5d108dcadfdd1d7c6ff5fae38eefcef2d50c7660367a29c54029b25e123a3aa
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -30,7 +30,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-06-22T09:59:26.1872435+02:00"
+    created: "2021-06-22T10:05:29.4432027+02:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -63,7 +63,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 6.0.11
-    created: "2021-06-22T09:59:26.190246+02:00"
+    created: "2021-06-22T10:05:29.4472016+02:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -90,4 +90,4 @@ entries:
     urls:
     - charts/redis-12.7.7.tgz
     version: 12.7.7
-generated: "2021-06-22T09:59:26.175246+02:00"
+generated: "2021-06-22T10:05:29.4302034+02:00"
