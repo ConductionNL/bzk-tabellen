@@ -7481,12 +7481,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
     required: []
   Tabel56-read:
     properties:
@@ -7507,12 +7507,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2021-06-21 13:58:50'
+        example: '2021-06-23 09:16:50'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date-time
-        example: '2021-06-21 13:58:50'
+        example: '2021-06-23 09:16:50'
     required: []
   RSIN-read:
     properties:
@@ -7562,7 +7562,7 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
     required: []
   Tabel36-read:
     properties:
@@ -7595,12 +7595,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
     required: []
   Tabel32-read:
     properties:
@@ -7622,12 +7622,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
     required: []
   Tabel55-read:
     properties:
@@ -7665,17 +7665,17 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
       fictieveDatumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
     required: []
   Tabel48-read:
     properties:
@@ -7696,12 +7696,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
     required: []
   Tabel39-read:
     properties:
@@ -7758,12 +7758,12 @@ definitions:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
       datumEinde:
         description: 'A "Y-m-d" formatted value'
         type: string
         format: date
-        example: '2021-06-21'
+        example: '2021-06-23'
     required: []
   ChangeLog-read:
     properties:
@@ -7803,12 +7803,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-06-21 13:58:50'
+        example: '2021-06-23 09:16:50'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-06-21 13:58:50'
+        example: '2021-06-23 09:16:50'
     required: []
   ChangeLog-write:
     properties:
@@ -7922,12 +7922,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-06-21 13:58:50'
+        example: '2021-06-23 09:16:50'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-06-21 13:58:50'
+        example: '2021-06-23 09:16:50'
     required: []
   AuditTrail-write:
     properties:
