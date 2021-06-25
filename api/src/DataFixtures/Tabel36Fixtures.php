@@ -18,6 +18,8 @@ class Tabel36Fixtures extends Fixture
             // Lets get a line from the csv file
             $line = fgetcsv($csv);
 
+            var_dump($line);
+
             // Lets skip the first line sine it contains colum names
             if ($i == 0) {
                 $i++;
