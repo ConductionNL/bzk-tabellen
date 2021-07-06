@@ -5,7 +5,7 @@ entries:
       artifacthub.io/containsSecurityUpdates: "true"
     apiVersion: v2
     appVersion: V1.0
-    created: "2021-06-23T09:16:35.8236376Z"
+    created: "2021-07-06T14:51:03.9845937+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -19,7 +19,7 @@ entries:
       de landelijke index tabellen van BZK (NL dus) waar je bijvoorbeeld gemeenten
       nummers kan terugvinden. Het voorziet in die zin in het via API beschikbaar
       stellen van niet Common Ground bronnen.
-    digest: a3ef713f9f93a20297084db27eba8b04ad9e6e9e8f5a6bf2e9780fdb49931193
+    digest: 28e14c5ab4e156d8dc5dd53820fd5bbcb40c40629815cf03562932b8e0cc8a24
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -41,7 +41,7 @@ entries:
     version: 1.0.0
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-06-23T09:16:35.8106811Z"
+    created: "2021-07-06T14:51:03.9725924+02:00"
     description: Het Landelijke Tabellen Component voorziet in het ontsluiten van
       de landelijke index tabellen van BZK (NL dus) waar je bijvoorbeeld gemeenten
       nummers kan terugvinden. Het voorziet in die zin in het via API beschikbaar
@@ -71,7 +71,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-06-23T09:16:35.830276Z"
+    created: "2021-07-06T14:51:03.9885924+02:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -105,7 +105,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 6.0.11
-    created: "2021-06-23T09:16:35.8379675Z"
+    created: "2021-07-06T14:51:03.9925926+02:00"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -134,4 +134,4 @@ entries:
     urls:
     - charts/redis-12.7.7.tgz
     version: 12.7.7
-generated: "2021-06-23T09:16:35.7952504Z"
+generated: "2021-07-06T14:51:03.9586494+02:00"

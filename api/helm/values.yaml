@@ -61,6 +61,7 @@ postgresql:
 ingress:
   enabled: false
   hostname: .local
+  type: "traefik"
   path: /
   annotations:
     # kubernetes.io/ingress.global-static-ip-name: chart-ip
